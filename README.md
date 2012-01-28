@@ -1,4 +1,7 @@
-# `reBird`
+reBird
+======
+
+[![Build Status](https://api.travis-ci.org/ropensci/rebird.png)](https://travis-ci.org/ropensci/rebird)
 
 `reBird` is a package to interface with the eBird webservices.
 
@@ -6,3 +9,16 @@ eBird is a real-time, online bird checklist program. For more information, visit
 
 the API for the eBird webservices can be accessed here: https://confluence.cornell.edu/display/CLOISAPI/eBird+API+1.1
 
+##Install
+
+For now, either download the archive above and install using `$R CMD INSTALL`
+or use Hadley Wickham's [devtools](https://github.com/hadley/devtools):
+
+```coffee
+library(devtools)
+install_github("rebird", "ropensci")
+```
+
+##Examples
+
+(coming soon)

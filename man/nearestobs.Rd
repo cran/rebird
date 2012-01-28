@@ -2,26 +2,23 @@
 \alias{nearestobs}
 \title{Nearest species sightings}
 \usage{
-  nearestobs(lat, lng, species, dist = NULL, back = NULL,
+  nearestobs(species, lat = NULL, lng = NULL, back = NULL,
     max = NULL, locale = NULL, provisional = FALSE,
     hotspot = FALSE, sleep = 0, ...)
 }
 \arguments{
-  \item{lat}{(required) Decimal latitude. value between
-  -90.00 and 90.00, up to two decimal places of precision.}
-
-  \item{lng}{(required) Decimal longitude. value between
-  -180.00 and 180.00, up to two decimal places of
-  precision.}
-
   \item{species}{(required) Scientific name of the species
   of interest (not case sensitive). See eBird taxonomy for
   more information:
   http://ebird.org/content/ebird/about/ebird-taxonomy}
 
-  \item{dist}{Distance defining radius of interest from
-  given lat/lng in kilometers (between 0 and 50, defaults
-  to 25)}
+  \item{lat}{Decimal latitude. value between -90.00 and
+  90.00, up to two decimal places of precision. Defaults to
+  latitude basd on IP.}
+
+  \item{lng}{Decimal longitude. value between -180.00 and
+  180.00, up to two decimal places of precision. Defaults
+  to longitude basd on IP.}
 
   \item{back}{Number of days back to look for observations
   (between 1 and 30, defaults to 14).}
@@ -54,9 +51,9 @@
   "howMany": number of individuals observed, NA if only
   presence was noted
 
-  "lat": latitude of the location
+  "lat": latitude of the location.
 
-  "lng": longitude of the location
+  "lng": longitude of the location.
 
   "locID": unique identifier for the location
 
@@ -66,7 +63,7 @@
   hotspot
 
   "obsDt": observation date formatted according to ISO 8601
-  (e.g. 'YYYY-MM-DD', or 'YYYY-MM-DD hh:mm').  Hours and
+  (e.g. 'YYYY-MM-DD', or 'YYYY-MM-DD hh:mm'). Hours and
   minutes are excluded if the observer did not report an
   observation time.
 
@@ -85,8 +82,8 @@
 }
 \examples{
 \dontrun{
-nearestobs(42,-76,'spizella arborea')
-nearestobs(42,-76,'spizella arborea', max=10, provisional=T, hotspot=T) }
+nearestobs('spizella arborea', 42, -76)
+nearestobs('spizella arborea', 42,-76, max=10, provisional=T, hotspot=T) }
 }
 \author{
   Rafael Maia \email{rm72@zips.uakron.edu}

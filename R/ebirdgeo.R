@@ -3,15 +3,15 @@
 #' Returns the most recent sighting date and specific location for the requested 
 #' species of bird reported within the number of days specified
 #'    and reported in the specified area.
-#' @import RJSONIO plyr RCurl
-#' @param lat (required) Decimal latitude. value between -90.00 and 90.00, up to two 
-#'    decimal places of precision.
-#' @param lng (required) Decimal longitude. value between -180.00 and 180.00, up to
-#'    two decimal places of precision.
+#' @import RJSONIO plyr httr
 #' @param species Scientific name of the species of interest (not case 
-#' sensitive). Defaults to NULL, so sightings for all species are returned.
-#' See eBird taxonomy for more information: 
-#' http://ebird.org/content/ebird/about/ebird-taxonomy
+#'    sensitive). Defaults to NULL, so sightings for all species are returned.
+#'    See eBird taxonomy for more information: 
+#'    http://ebird.org/content/ebird/about/ebird-taxonomy
+#' @param lat Decimal latitude. value between -90.00 and 90.00, up to two 
+#'    decimal places of precision. Defaults to latitude basd on IP.
+#' @param lng Decimal longitude. value between -180.00 and 180.00, up to
+#'    two decimal places of precision. Defaults to longitude basd on IP.
 #' @param dist Distance defining radius of interest from given lat/lng in 
 #'    kilometers (between 0 and 50, defaults to 25)
 #' @param back Number of days back to look for observations (between
@@ -38,7 +38,7 @@
 #' @return "locName": location name
 #' @return "locationPrivate": TRUE if location is not a birding hotspot
 #' @return "obsDt": observation date formatted according to ISO 8601 
-#'    (e.g. 'YYYY-MM-DD', or 'YYYY-MM-DD hh:mm').  Hours and minutes are excluded 
+#'    (e.g. 'YYYY-MM-DD', or 'YYYY-MM-DD hh:mm'). Hours and minutes are excluded 
 #'    if the observer did not report an observation time. 
 #' @return "obsReviewed": TRUE if observation has been reviewed, FALSE otherwise
 #' @return "obsValid": TRUE if observation has been deemed valid by either the 
@@ -46,50 +46,71 @@
 #' @return "sciName" species' scientific name
 #' @export
 #' @examples \dontrun{
-#' ebirdgeo(42,-76,'spinus tristis')
-#' ebirdgeo(42,-76, maxResults=10, includeProvisional=T, hotspot=T) }
+#'    ebirdgeo('spinus tristis', 42, -76)
+#'    ebirdgeo(42,-76, maxResults=10, includeProvisional=T, hotspot=T) }
 #' @author Rafael Maia \email{rm72@@zips.uakron.edu}
 #' @references \url{http://ebird.org/}
 
 
-ebirdgeo <-  function(lat,lng, species=NULL, dist = NULL, back = NULL, 
-  max = NULL, locale = NULL, provisional = FALSE, 
-  hotspot = FALSE,   sleep = 0,
-  ... #additional parameters inside curl
-  ) {
-  	
-  curl <- getCurlHandle() 
-    
+ebirdgeo <-  function(species=NULL, lat = NULL, lng = NULL, dist = NULL, 
+                      back = NULL, max = NULL, locale = NULL, 
+                      provisional = FALSE, hotspot = FALSE,   sleep = 0,
+                      ... #additional parameters inside curl
+) {
+  
   Sys.sleep(sleep)
-
+  
   if(!is.null(species)){
-    url <- 'http://ebird.org/ws1.1/data/obs/geo_spp/recent' }else{
-    url <- 'http://ebird.org/ws1.1/data/obs/geo/recent' }
- 
+    url <- 'http://ebird.org/ws1.1/data/obs/geo_spp/recent' 
+  } else {
+    url <- 'http://ebird.org/ws1.1/data/obs/geo/recent'
+  }
+  
+  geoloc <- c(lat,lng)
+  
+  if (is.null(geoloc)) {
+    geoloc <- getlatlng()
+  }
+  
+  if (abs(geoloc[1]) > 90) {
+    stop("Please provide a latitude between -90 and 90 degrees.")
+  }
+  
+  if (abs(geoloc[2]) > 180) {
+    stop("Please provide a longitude between -180 and 180 degrees.")
+  }
     
-  if(!is.null(dist))
+  if (!is.null(dist)) {
+    if (dist > 50) {
+      dist <- 50
+      warning("Distance supplied was >50km, using 50km.")
+    }
     dist <- round(dist)
-  if(!is.null(back))
+  }
+    
+  if (!is.null(back)) {
+    if (back > 30) {
+      back <- 30
+      warning("'Back' supplied was >30 days, using 30 days.")
+    }
     back <- round(back)
-
+  }
+  
   args <- compact(list(fmt='json', sci=species, 
-               lat=round(lat,2), lng=round(lng,2),
-               dist=dist, back=back, maxResults=max,
-               locale=locale
-               ))
-
-  if(provisional)
+                       lat=round(geoloc[1],2), lng=round(geoloc[2],2),
+                       dist=dist, back=back, maxResults=max,
+                       locale=locale
+  ))
+  
+  if (provisional) {
     args$includeProvisional <- 'true' 
-  if(hotspot)
+  }
+  
+  if (hotspot) {
     args$hotspot <- 'true'
-
-
-    content <- getForm(url, 
-                .params = args, 
-                ... ,
-                curl = curl)
-
- res <- fromJSON(content)  
- 
- ldply(res, data.frame)  
+  }
+  
+  res <- content(GET(url, query = args))
+  ret <- rbind.fill(lapply(res, data.frame, stringsAsFactors=FALSE))
+  return(ret)
 }

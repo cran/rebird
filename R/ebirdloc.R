@@ -30,7 +30,7 @@
 #' @return "locName": location name
 #' @return "locationPrivate": TRUE if location is not a birding hotspot
 #' @return "obsDt": observation date formatted according to ISO 8601 
-#'    (e.g. 'YYYY-MM-DD', or 'YYYY-MM-DD hh:mm').  Hours and minutes are excluded 
+#'    (e.g. 'YYYY-MM-DD', or 'YYYY-MM-DD hh:mm'). Hours and minutes are excluded 
 #'    if the observer did not report an observation time. 
 #' @return "obsReviewed": TRUE if observation has been reviewed, FALSE otherwise
 #' @return "obsValid": TRUE if observation has been deemed valid by either the 
@@ -39,7 +39,8 @@
 #' @export
 #' @examples \dontrun{
 #' ebirdloc(c('L99381','L99382'))
-#' ebirdloc('L99381', 'larus delawarensis', max=10, provisional=T, hotspot=T)}
+#' ebirdloc('L99381', 'larus delawarensis', max=10, provisional=T, hotspot=T)
+#' }
 #' @author Rafael Maia \email{rm72@@zips.uakron.edu}
 #' @references \url{http://ebird.org/}
 
@@ -50,32 +51,38 @@ ebirdloc <-  function(locID, species=NULL, back = NULL, max = NULL,
 
   curl <- getCurlHandle()
 
-  if(length(locID) > 10)
+  if (length(locID) > 10) {
     stop('Too many locations (max. 10)')
+  }
 
   Sys.sleep(sleep)
   
-  if(!is.null(species)){
-    url <- 'http://ebird.org/ws1.1/data/obs/loc_spp/recent' }else{
-    url <- 'http://ebird.org/ws1.1/data/obs/loc/recent' }
+  if(!is.null(species)) {
+    url <- 'http://ebird.org/ws1.1/data/obs/loc_spp/recent'
+  } else {
+    url <- 'http://ebird.org/ws1.1/data/obs/loc/recent' 
+  }
 
-  if(!is.null(back))
-    back <- round(back)  
+  if(!is.null(back)) {
+    back <- round(back) 
+  }
 
   args <- compact(list(
-  fmt='json', sci=species,
-  r=locID, back=back, maxResults=max,
-  locale=locale
+    fmt='json', sci=species,
+    r=locID, back=back, maxResults=max,
+    locale=locale
   ))
   
-  if(provisional)
-    args$includeProvisional <- 'true' 
+  if(provisional) {
+    args$includeProvisional <- 'true'
+  }
 
-content <- getForm(url, 
-            .params = args, 
-            ... ,
-            curl = curl)
-
-res <- fromJSON(content)  
-ldply(res, data.frame)  
+  content <- getForm(url, 
+                     .params = args, 
+                     ... ,
+                     curl = curl)
+  
+  res <- fromJSON(content)  
+  ret <- rbind.fill(lapply(res, data.frame, stringsAsFactors=FALSE))
+  return(ret)
 }

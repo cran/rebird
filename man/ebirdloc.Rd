@@ -59,7 +59,7 @@ of locations (including non-hotspots).}
   hotspot
 
   "obsDt": observation date formatted according to ISO 8601
-  (e.g. 'YYYY-MM-DD', or 'YYYY-MM-DD hh:mm').  Hours and
+  (e.g. 'YYYY-MM-DD', or 'YYYY-MM-DD hh:mm'). Hours and
   minutes are excluded if the observer did not report an
   observation time.
 
@@ -80,7 +80,8 @@ of locations (including non-hotspots).}
 \examples{
 \dontrun{
 ebirdloc(c('L99381','L99382'))
-ebirdloc('L99381', 'larus delawarensis', max=10, provisional=T, hotspot=T)}
+ebirdloc('L99381', 'larus delawarensis', max=10, provisional=T, hotspot=T)
+}
 }
 \author{
   Rafael Maia \email{rm72@zips.uakron.edu}

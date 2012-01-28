@@ -36,7 +36,7 @@
 #' @return "locName": location name
 #' @return "locationPrivate": TRUE if location is not a birding hotspot
 #' @return "obsDt": observation date formatted according to ISO 8601 
-#'    (e.g. 'YYYY-MM-DD', or 'YYYY-MM-DD hh:mm').  Hours and minutes are excluded 
+#'    (e.g. 'YYYY-MM-DD', or 'YYYY-MM-DD hh:mm'). Hours and minutes are excluded 
 #'    if the observer did not report an observation time. 
 #' @return "obsReviewed": TRUE if observation has been reviewed, FALSE otherwise
 #' @return "obsValid": TRUE if observation has been deemed valid by either the 
@@ -63,29 +63,36 @@ ebirdregion <-  function(region, species = NULL,
     
   Sys.sleep(sleep)
   
-  if(!is.null(species)){
-	url <- 'http://ebird.org/ws1.1/data/obs/region_spp/recent' }else{
-    url <- 'http://ebird.org/ws1.1/data/obs/region/recent' }
+  if (!is.null(species)) {
+    url <- 'http://ebird.org/ws1.1/data/obs/region_spp/recent'
+  } else {
+    url <- 'http://ebird.org/ws1.1/data/obs/region/recent'
+  }
 
-  if(!is.null(back))
+  if(!is.null(back)) {
     back <- round(back)
+  }
 
   args <- compact(list(
-  fmt='json', r=region, rtype=regtype,
-  sci=species, back=back, 
-  maxResults=max, locale=locale
+    fmt='json', r=region, rtype=regtype,
+    sci=species, back=back, 
+    maxResults=max, locale=locale
   ))
 
-  if(provisional)
-    args$includeProvisional <- 'true' 
-  if(hotspot)
-    args$hotspot <- 'true' 
-
-content <- getForm(url, 
-            .params = args, 
-            ... ,
-            curl = curl)
-
-res <- fromJSON(content)   
-ldply(res, data.frame)  
+  if(provisional) {
+    args$includeProvisional <- 'true'
+  }
+  
+  if(hotspot) {
+    args$hotspot <- 'true'
+  }
+  
+  content <- getForm(url, 
+                     .params = args, 
+                     ... ,
+                     curl = curl)
+  
+  res <- fromJSON(content)   
+  ret <- rbind.fill(lapply(res, data.frame, stringsAsFactors=FALSE))
+  return(ret)
 }

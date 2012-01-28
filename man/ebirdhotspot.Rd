@@ -14,7 +14,7 @@
 
   \item{species}{Scientific name of the species of interest
   (not case sensitive). Defaults to NULL, in which case
-  sightings for all species are returned. See eBird
+  sightings for all species are returned.  See eBird
   taxonomy for more information:
   http://ebird.org/content/ebird/about/ebird-taxonomy}
 
@@ -58,7 +58,7 @@
   hotspot
 
   "obsDt": observation date formatted according to ISO 8601
-  (e.g. 'YYYY-MM-DD', or 'YYYY-MM-DD hh:mm').  Hours and
+  (e.g. 'YYYY-MM-DD', or 'YYYY-MM-DD hh:mm'). Hours and
   minutes are excluded if the observer did not report an
   observation time.
 
@@ -77,8 +77,8 @@
 }
 \examples{
 \dontrun{
-ebirdhotspot(locID=c('L99381','L99382'),'larus delawarensis')
-ebirdhotspot('L99381', max=10, includeProvisional=T, hotspot=T)}
+   ebirdhotspot(locID=c('L99381','L99382'),'larus delawarensis')
+   ebirdhotspot('L99381', max=10, includeProvisional=T, hotspot=T)}
 }
 \author{
   Rafael Maia \email{rm72@zips.uakron.edu}

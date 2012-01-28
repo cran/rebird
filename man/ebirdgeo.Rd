@@ -2,23 +2,24 @@
 \alias{ebirdgeo}
 \title{Sightings at location determined by latitude/longitude}
 \usage{
-  ebirdgeo(lat, lng, species = NULL, dist = NULL,
-    back = NULL, max = NULL, locale = NULL,
+  ebirdgeo(species = NULL, lat = NULL, lng = NULL,
+    dist = NULL, back = NULL, max = NULL, locale = NULL,
     provisional = FALSE, hotspot = FALSE, sleep = 0, ...)
 }
 \arguments{
-  \item{lat}{(required) Decimal latitude. value between
-  -90.00 and 90.00, up to two decimal places of precision.}
-
-  \item{lng}{(required) Decimal longitude. value between
-  -180.00 and 180.00, up to two decimal places of
-  precision.}
-
   \item{species}{Scientific name of the species of interest
   (not case sensitive). Defaults to NULL, so sightings for
-  all species are returned. See eBird taxonomy for more
+  all species are returned.  See eBird taxonomy for more
   information:
   http://ebird.org/content/ebird/about/ebird-taxonomy}
+
+  \item{lat}{Decimal latitude. value between -90.00 and
+  90.00, up to two decimal places of precision. Defaults to
+  latitude basd on IP.}
+
+  \item{lng}{Decimal longitude. value between -180.00 and
+  180.00, up to two decimal places of precision. Defaults
+  to longitude basd on IP.}
 
   \item{dist}{Distance defining radius of interest from
   given lat/lng in kilometers (between 0 and 50, defaults
@@ -67,7 +68,7 @@
   hotspot
 
   "obsDt": observation date formatted according to ISO 8601
-  (e.g. 'YYYY-MM-DD', or 'YYYY-MM-DD hh:mm').  Hours and
+  (e.g. 'YYYY-MM-DD', or 'YYYY-MM-DD hh:mm'). Hours and
   minutes are excluded if the observer did not report an
   observation time.
 
@@ -88,8 +89,8 @@
 }
 \examples{
 \dontrun{
-ebirdgeo(42,-76,'spinus tristis')
-ebirdgeo(42,-76, maxResults=10, includeProvisional=T, hotspot=T) }
+   ebirdgeo('spinus tristis', 42, -76)
+   ebirdgeo(42,-76, maxResults=10, includeProvisional=T, hotspot=T) }
 }
 \author{
   Rafael Maia \email{rm72@zips.uakron.edu}
