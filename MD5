@@ -1,0 +1,17 @@
+ba48691fd8ed45403d3318e798fe41b1 *DESCRIPTION
+3bff849a8400ddb877816492495d73d7 *NAMESPACE
+77a5eb4c2d85c01cf64f2d02fb6b5b93 *R/ebirdgeo.R
+fa32dab1ece2ae465e4049a989712626 *R/ebirdhotspot.R
+bb1ebb672619337d8662d6d4d70ad352 *R/ebirdloc.R
+2742b98717fb822ad5779b33e984f633 *R/ebirdregion.R
+2908fb285c3255c19d775aa3144604db *R/nearestobs.R
+f113672219a551201fe1d6bb3ebdf378 *R/notable.R
+8fc32abefec7def82c05093ff845fb7a *R/rebird-package.R
+65296e0e52290fb1424256b342f30c18 *README.md
+42291bd7ee7fc09e7d74c71ce6d19223 *man/ebirdgeo.Rd
+54817bede7a988f29adaf25a17a2183b *man/ebirdhotspot.Rd
+5d4b5a889e58b20b242ba0aaccc8a2c7 *man/ebirdloc.Rd
+cd67433cafdc628e08645d6c0cece2a8 *man/ebirdnotable.Rd
+bd56f37e66ba5ffb4c63f773cb922fb2 *man/ebirdregion.Rd
+83ef59aa4397798b8160b716976a35ac *man/nearestobs.Rd
+84b1d090beaa50b072d4ee2796419175 *man/rebird-package.Rd
