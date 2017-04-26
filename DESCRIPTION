@@ -1,6 +1,6 @@
 Package: rebird
-Version: 0.3.0
-Date: 2016-03-23
+Version: 0.4.0
+Date: 2016-04-25
 Title: R Client for the eBird Database of Bird Observations
 Description: A programmatic client for the eBird database, including functions
     for searching for bird observations by geographic location (latitude,
@@ -17,14 +17,14 @@ URL: http://github.com/ropensci/rebird
 BugReports: http://github.com/ropensci/rebird/issues
 VignetteBuilder: knitr
 Imports: methods, utils, stats, httr (>= 1.0.0), jsonlite, dplyr
-Suggests: knitr, testthat
-RoxygenNote: 5.0.1
+Suggests: knitr, testthat, covr
+RoxygenNote: 6.0.1
 NeedsCompilation: no
-Packaged: 2016-03-23 21:41:37 UTC; mavzz
+Packaged: 2017-04-26 03:03:30 UTC; mavzz
 Author: Rafael Maia [aut],
   Scott Chamberlain [aut],
   Andy Teucher [aut],
   Sebastian Pardo [aut, cre]
 Maintainer: Sebastian Pardo <sebpardo@gmail.com>
 Repository: CRAN
-Date/Publication: 2016-03-23 22:47:58
+Date/Publication: 2017-04-26 05:37:07 UTC
