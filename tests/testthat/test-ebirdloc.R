@@ -15,7 +15,7 @@ test_that("ebirdloc works correctly", {
   lesssimpler <- ebirdloc('L99381', max = 1, simple = FALSE)
   expect_lt(NCOL(simpler), 15)
   expect_gt(NCOL(simpler), 8)
-  expect_lt(NCOL(lesssimpler), 30)
+  expect_lt(NCOL(lesssimpler), 40)
   expect_gt(NCOL(lesssimpler), 10)
 })
 
@@ -28,6 +28,6 @@ test_that("ebirdloc fails correctly", {
   expect_error(ebirdloc(locID = c('L99381','L99382','L99381','L99382','L99381','L99382',
                           'L99381','L99382','L99381','L99382','L99382')), 
                "Too many locations")
-  expect_error(ebirdloc(locID = 'L99381', config=timeout(0.02)))
+  expect_error(ebirdloc(locID = 'L99381', config=timeout(0.001)))
   expect_error(suppressWarnings(ebirdloc(locID = 'L99381', sleep = "adf")), "invalid 'time' value")
 })

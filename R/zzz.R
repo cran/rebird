@@ -1,6 +1,8 @@
+#' @importFrom methods is
+
 ebird_compact <- function(x) Filter(Negate(is.null), x)
 
-ebase <- function() 'http://ebird.org/ws1.1/'
+ebase <- function() 'https://ebird.org/ws1.1/'
 
 ebird_GET <- function(url, args, ...){
   tt <- GET(url, query = args, ...)
@@ -30,3 +32,4 @@ ebird_GET <- function(url, args, ...){
     }
   }
 }
+
