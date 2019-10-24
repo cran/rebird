@@ -30,7 +30,7 @@ library("rebird")
 
 ## Usage
 
-The [eBird API server](https://documenter.getpostman.com/view/664302/ebird-api-20/2HTbHW) 
+The [eBird API server](https://documenter.getpostman.com/view/664302/S1ENwy59?version=latest) 
 has been updated and thus there are a couple major changes in the way `rebird` works.
 API requests to eBird now require users to provide an API key, which is linked to your 
 eBird user account. 
@@ -158,6 +158,19 @@ or a region
 ebirdnotable(locID = 'US-NY-109')
 ```
 
+### Historic Observations
+
+Search for historic observations on a date at a region 
+
+```{r ebirdhistorical1}
+ebirdhistorical(loc = 'US-VA-003', date = '2019-02-14', max = 10)
+```
+
+or a hotspot
+
+```{r ebirdhistorical2}
+ebirdhistorical(loc = 'L196159', date = '2019-02-14', fieldSet = 'full')
+```
 
 ### eBird taxonomy
 
@@ -173,10 +186,16 @@ Search for hybrid species only
 ebirdtaxonomy(cat = "hybrid")
 ```
 
-### Check eBird region
+## Information on a given region or hotspot
 
-Obtain information on any region 
+Obtain detailed information on any valid eBird region
 
-```{r ebirdregioninfo}
-ebirdregioninfo(loc = 'CA-BC-GV')
+```{r ebirdregioninfo1}
+ebirdregioninfo("CA-BC-GV")
+```
+
+or hotspot
+
+```{r ebirdregioninfo2}
+ebirdregioninfo("L196159")
 ```

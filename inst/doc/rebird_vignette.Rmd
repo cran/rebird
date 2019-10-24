@@ -33,7 +33,7 @@ library("rebird")
 
 ## Usage
 
-The [eBird API server](https://documenter.getpostman.com/view/664302/ebird-api-20/2HTbHW) 
+The [eBird API server](https://documenter.getpostman.com/view/664302/S1ENwy59?version=latest) 
 has been updated and thus there are a couple major changes in the way `rebird` works.
 API requests to eBird now require users to provide an API key, which is linked to your 
 eBird user account. 
@@ -81,20 +81,20 @@ ebirdgeo(species = species_code('spinus tristis'), lat = 42, lng = -76)
 ```
 
 ```
-## # A tibble: 45 x 12
-##    speciesCode comName  sciName  locId locName   obsDt howMany   lat   lng
-##    <chr>       <chr>    <chr>    <chr> <chr>     <chr>   <int> <dbl> <dbl>
-##  1 amegfi      America… Spinus … L447… Binghamt… 2018…       2  42.1 -76.0
-##  2 amegfi      America… Spinus … L207… Workwalk  2018…       1  42.1 -75.9
-##  3 amegfi      America… Spinus … L495… Binghamt… 2018…       1  42.1 -76.0
-##  4 amegfi      America… Spinus … L527… R Tee Go… 2018…       1  42.2 -75.9
-##  5 amegfi      America… Spinus … L795… US-New Y… 2018…       7  42.1 -76.0
-##  6 amegfi      America… Spinus … L978… Murphys … 2018…       5  42.1 -76.0
-##  7 amegfi      America… Spinus … L209… Aquaterr… 2018…       9  42.0 -75.9
-##  8 amegfi      America… Spinus … L320… Hillcres… 2018…       1  42.2 -75.9
-##  9 amegfi      America… Spinus … L285… Camp Sus… 2018…       1  42.0 -75.9
-## 10 amegfi      America… Spinus … L519… IBM Glen… 2018…       3  42.1 -76.0
-## # ... with 35 more rows, and 3 more variables: obsValid <lgl>,
+## # A tibble: 26 x 12
+##    speciesCode comName sciName locId locName obsDt howMany   lat   lng
+##    <chr>       <chr>   <chr>   <chr> <chr>   <chr>   <int> <dbl> <dbl>
+##  1 amegfi      Americ… Spinus… L100… Bare V… 2019…       7  41.8 -75.9
+##  2 amegfi      Americ… Spinus… L447… Bingha… 2019…       6  42.1 -76.0
+##  3 amegfi      Americ… Spinus… L275… "Home " 2019…       1  42.1 -76.0
+##  4 amegfi      Americ… Spinus… L505… Boland… 2019…       1  42.2 -75.9
+##  5 amegfi      Americ… Spinus… L351… Anson … 2019…      25  42.1 -76.1
+##  6 amegfi      Americ… Spinus… L524… Victor… 2019…       3  42.1 -76.0
+##  7 amegfi      Americ… Spinus… L846… 31 Pul… 2019…       2  42.2 -76.2
+##  8 amegfi      Americ… Spinus… L217… Vestal  2019…      11  42.1 -76.0
+##  9 amegfi      Americ… Spinus… L211… Tri-Ci… 2019…       2  42.1 -76.1
+## 10 amegfi      Americ… Spinus… L166… Chugnu… 2019…      NA  42.1 -76.0
+## # … with 16 more rows, and 3 more variables: obsValid <lgl>,
 ## #   obsReviewed <lgl>, locationPrivate <lgl>
 ```
 
@@ -107,19 +107,19 @@ ebirdgeo(lat = 42, lng = -76, max = 10, includeProvisional = TRUE, hotspot = TRU
 
 ```
 ## # A tibble: 10 x 12
-##    speciesCode comName  sciName  locId  locName  obsDt howMany   lat   lng
-##    <chr>       <chr>    <chr>    <chr>  <chr>    <chr>   <int> <dbl> <dbl>
-##  1 cangoo      Canada … Branta … L1869… Cheri A… 2018…       4  42.1 -75.9
-##  2 mallar3     Mallard  Anas pl… L1869… Cheri A… 2018…      20  42.1 -75.9
-##  3 rocpig      Rock Pi… Columba… L1869… Cheri A… 2018…       3  42.1 -75.9
-##  4 doccor      Double-… Phalacr… L1869… Cheri A… 2018…       5  42.1 -75.9
-##  5 grbher3     Great B… Ardea h… L1869… Cheri A… 2018…       1  42.1 -75.9
-##  6 greegr      Great E… Ardea a… L1869… Cheri A… 2018…       5  42.1 -75.9
-##  7 blujay      Blue Jay Cyanoci… L1869… Cheri A… 2018…       1  42.1 -75.9
-##  8 amecro      America… Corvus … L1869… Cheri A… 2018…       1  42.1 -75.9
-##  9 grycat      Gray Ca… Dumetel… L1869… Cheri A… 2018…       1  42.1 -75.9
-## 10 normoc      Norther… Mimus p… L1869… Cheri A… 2018…       2  42.1 -75.9
-## # ... with 3 more variables: obsValid <lgl>, obsReviewed <lgl>,
+##    speciesCode comName sciName locId locName obsDt howMany   lat   lng
+##    <chr>       <chr>   <chr>   <chr> <chr>   <chr>   <int> <dbl> <dbl>
+##  1 cangoo      Canada… Branta… L147… Quaker… 2019…       2  42.0 -75.9
+##  2 mallar3     Mallard Anas p… L147… Quaker… 2019…      27  42.0 -75.9
+##  3 grbher3     Great … Ardea … L147… Quaker… 2019…       1  42.0 -75.9
+##  4 blujay      Blue J… Cyanoc… L147… Quaker… 2019…       1  42.0 -75.9
+##  5 eursta      Europe… Sturnu… L147… Quaker… 2019…       4  42.0 -75.9
+##  6 daejun      Dark-e… Junco … L147… Quaker… 2019…       1  42.0 -75.9
+##  7 turvul      Turkey… Cathar… L447… Bingha… 2019…       8  42.1 -76.0
+##  8 norhar2     Northe… Circus… L447… Bingha… 2019…       1  42.1 -76.0
+##  9 baleag      Bald E… Haliae… L447… Bingha… 2019…       1  42.1 -76.0
+## 10 rethaw      Red-ta… Buteo … L447… Bingha… 2019…       2  42.1 -76.0
+## # … with 3 more variables: obsValid <lgl>, obsReviewed <lgl>,
 ## #   locationPrivate <lgl>
 ```
 
@@ -134,20 +134,20 @@ ebirdregion(loc = 'L99381')
 ```
 
 ```
-## # A tibble: 64 x 12
-##    speciesCode comName   sciName   locId locName obsDt howMany   lat   lng
-##    <chr>       <chr>     <chr>     <chr> <chr>   <chr>   <int> <dbl> <dbl>
-##  1 wooduc      Wood Duck Aix spon… L993… Stewar… 2018…       4  42.5 -76.5
-##  2 mallar3     Mallard   Anas pla… L993… Stewar… 2018…      16  42.5 -76.5
-##  3 ambduc      American… Anas rub… L993… Stewar… 2018…       1  42.5 -76.5
-##  4 rocpig      Rock Pig… Columba … L993… Stewar… 2018…       4  42.5 -76.5
-##  5 ribgul      Ring-bil… Larus de… L993… Stewar… 2018…     110  42.5 -76.5
-##  6 hergul      Herring … Larus ar… L993… Stewar… 2018…       1  42.5 -76.5
-##  7 lbbgul      Lesser B… Larus fu… L993… Stewar… 2018…       1  42.5 -76.5
-##  8 gbbgul      Great Bl… Larus ma… L993… Stewar… 2018…       5  42.5 -76.5
-##  9 doccor      Double-c… Phalacro… L993… Stewar… 2018…     118  42.5 -76.5
-## 10 grnher      Green He… Butoride… L993… Stewar… 2018…       1  42.5 -76.5
-## # ... with 54 more rows, and 3 more variables: obsValid <lgl>,
+## # A tibble: 68 x 12
+##    speciesCode comName sciName locId locName obsDt howMany   lat   lng
+##    <chr>       <chr>   <chr>   <chr> <chr>   <chr>   <int> <dbl> <dbl>
+##  1 cangoo      Canada… Branta… L993… Stewar… 2019…       8  42.5 -76.5
+##  2 mallar3     Mallard Anas p… L993… Stewar… 2019…      25  42.5 -76.5
+##  3 ribgul      Ring-b… Larus … L993… Stewar… 2019…      30  42.5 -76.5
+##  4 hergul      Herrin… Larus … L993… Stewar… 2019…      35  42.5 -76.5
+##  5 gbbgul      Great … Larus … L993… Stewar… 2019…       6  42.5 -76.5
+##  6 doccor      Double… Phalac… L993… Stewar… 2019…     250  42.5 -76.5
+##  7 rebwoo      Red-be… Melane… L993… Stewar… 2019…       1  42.5 -76.5
+##  8 dowwoo      Downy … Dryoba… L993… Stewar… 2019…       3  42.5 -76.5
+##  9 norfli      Northe… Colapt… L993… Stewar… 2019…       1  42.5 -76.5
+## 10 blujay      Blue J… Cyanoc… L993… Stewar… 2019…       8  42.5 -76.5
+## # … with 58 more rows, and 3 more variables: obsValid <lgl>,
 ## #   obsReviewed <lgl>, locationPrivate <lgl>
 ```
 
@@ -165,10 +165,10 @@ ebirdregion(loc = 'L99381', species = species_code('larus delawarensis'),
 
 ```
 ## # A tibble: 1 x 12
-##   speciesCode comName   sciName   locId locName obsDt  howMany   lat   lng
-##   <chr>       <chr>     <chr>     <chr> <chr>   <chr>    <int> <dbl> <dbl>
-## 1 ribgul      Ring-bil… Larus de… L993… Stewar… 2018-…     110  42.5 -76.5
-## # ... with 3 more variables: obsValid <lgl>, obsReviewed <lgl>,
+##   speciesCode comName sciName locId locName obsDt howMany   lat   lng
+##   <chr>       <chr>   <chr>   <chr> <chr>   <chr>   <int> <dbl> <dbl>
+## 1 ribgul      Ring-b… Larus … L993… Stewar… 2019…      30  42.5 -76.5
+## # … with 3 more variables: obsValid <lgl>, obsReviewed <lgl>,
 ## #   locationPrivate <lgl>
 ```
 
@@ -187,20 +187,20 @@ nearestobs(species_code('branta canadensis'), 42, -76)
 ```
 
 ```
-## # A tibble: 27 x 12
-##    speciesCode comName  sciName  locId locName   obsDt howMany   lat   lng
-##    <chr>       <chr>    <chr>    <chr> <chr>     <chr>   <int> <dbl> <dbl>
-##  1 cangoo      Canada … Branta … L186… Cheri A.… 2018…       4  42.1 -75.9
-##  2 cangoo      Canada … Branta … L207… Workwalk  2018…      26  42.1 -75.9
-##  3 cangoo      Canada … Branta … L287… Vestal R… 2018…      49  42.1 -76.0
-##  4 cangoo      Canada … Branta … L527… R Tee Go… 2018…      53  42.2 -75.9
-##  5 cangoo      Canada … Branta … L728… State Ga… 2018…      23  41.9 -75.7
-##  6 cangoo      Canada … Branta … L504… Rt. 12A … 2018…      65  42.2 -75.9
-##  7 cangoo      Canada … Branta … L468… "Boland … 2018…      12  42.2 -75.9
-##  8 cangoo      Canada … Branta … L285… Camp Sus… 2018…       2  42.0 -75.9
-##  9 cangoo      Canada … Branta … L447… Binghamt… 2018…       2  42.1 -76.0
-## 10 cangoo      Canada … Branta … L501… William … 2018…      50  42.1 -76.0
-## # ... with 17 more rows, and 3 more variables: obsValid <lgl>,
+## # A tibble: 36 x 12
+##    speciesCode comName sciName locId locName obsDt howMany   lat   lng
+##    <chr>       <chr>   <chr>   <chr> <chr>   <chr>   <int> <dbl> <dbl>
+##  1 cangoo      Canada… Branta… L147… Quaker… 2019…       2  42.0 -75.9
+##  2 cangoo      Canada… Branta… L978… Murphy… 2019…      NA  42.1 -76.0
+##  3 cangoo      Canada… Branta… L207… Workwa… 2019…       4  42.1 -75.9
+##  4 cangoo      Canada… Branta… L245… Water … 2019…      20  42.1 -75.9
+##  5 cangoo      Canada… Branta… L274… River … 2019…      25  42.1 -76.0
+##  6 cangoo      Canada… Branta… L255… Wall S… 2019…       1  42.1 -75.9
+##  7 cangoo      Canada… Branta… L446… PA-SQ-… 2019…      25  41.8 -75.9
+##  8 cangoo      Canada… Branta… L179… Joyce … 2019…       6  41.8 -75.9
+##  9 cangoo      Canada… Branta… L246… Martin… 2019…       2  42.1 -75.9
+## 10 cangoo      Canada… Branta… L166… Chugnu… 2019…      40  42.1 -76.0
+## # … with 26 more rows, and 3 more variables: obsValid <lgl>,
 ## #   obsReviewed <lgl>, locationPrivate <lgl>
 ```
 
@@ -219,20 +219,20 @@ ebirdregion(loc = 'US', species = species_code('Setophaga caerulescens'))
 ```
 
 ```
-## # A tibble: 1,041 x 12
-##    speciesCode comName  sciName  locId  locName  obsDt howMany   lat   lng
-##    <chr>       <chr>    <chr>    <chr>  <chr>    <chr>   <int> <dbl> <dbl>
-##  1 btbwar      Black-t… Setopha… L3572… Cornell… 2018…       2  42.4 -76.5
-##  2 btbwar      Black-t… Setopha… L7962… Pisgah … 2018…       1  36.2 -81.7
-##  3 btbwar      Black-t… Setopha… L2785… Kiwanis… 2018…       1  27.0 -82.1
-##  4 btbwar      Black-t… Setopha… L1109… Enchant… 2018…       3  25.9 -80.2
-##  5 btbwar      Black-t… Setopha… L7814… Wissahi… 2018…       2  40.1 -75.2
-##  6 btbwar      Black-t… Setopha… L5987… Codding… 2018…       2  42.3 -76.4
-##  7 btbwar      Black-t… Setopha… L4023… Home - … 2018…       1  40.2 -75.4
-##  8 btbwar      Black-t… Setopha… L5862… Indrio … 2018…       1  27.5 -80.4
-##  9 btbwar      Black-t… Setopha… L1301… Ashland… 2018…       2  39.8 -75.7
-## 10 btbwar      Black-t… Setopha… L1877… Pinecra… 2018…       1  27.3 -82.5
-## # ... with 1,031 more rows, and 3 more variables: obsValid <lgl>,
+## # A tibble: 1,492 x 12
+##    speciesCode comName sciName locId locName obsDt howMany   lat   lng
+##    <chr>       <chr>   <chr>   <chr> <chr>   <chr>   <int> <dbl> <dbl>
+##  1 btbwar      Black-… Setoph… L668… Naples… 2019…       1  26.1 -81.7
+##  2 btbwar      Black-… Setoph… L399… Florid… 2019…       1  26.4 -80.1
+##  3 btbwar      Black-… Setoph… L900… 1301 S… 2019…       2  26.3 -80.1
+##  4 btbwar      Black-… Setoph… L486… Union … 2019…       1  40.7 -74.0
+##  5 btbwar      Black-… Setoph… L100… "Parki… 2019…       1  26.1 -80.1
+##  6 btbwar      Black-… Setoph… L685… Hillsb… 2019…       2  26.3 -80.2
+##  7 btbwar      Black-… Setoph… L616… Lake L… 2019…       3  35.9 -78.7
+##  8 btbwar      Black-… Setoph… L871… Eno Ri… 2019…       1  36.1 -79.0
+##  9 btbwar      Black-… Setoph… L994… Jupite… 2019…       1  27.0 -80.1
+## 10 btbwar      Black-… Setoph… L127… Hugh T… 2019…       1  26.1 -80.1
+## # … with 1,482 more rows, and 3 more variables: obsValid <lgl>,
 ## #   obsReviewed <lgl>, locationPrivate <lgl>
 ```
 
@@ -245,19 +245,19 @@ ebirdregion(loc = 'US-OH', max = 10, provisional = TRUE, hotspot = TRUE)
 
 ```
 ## # A tibble: 10 x 12
-##    speciesCode comName  sciName  locId locName   obsDt howMany   lat   lng
-##    <chr>       <chr>    <chr>    <chr> <chr>     <chr>   <int> <dbl> <dbl>
-##  1 belkin1     Belted … Megacer… L416… Big Cree… 2018…       1  41.4 -81.8
-##  2 norcar      Norther… Cardina… L416… Big Cree… 2018…       2  41.4 -81.8
-##  3 greegr      Great E… Ardea a… L416… Big Cree… 2018…       6  41.4 -81.8
-##  4 grbher3     Great B… Ardea h… L416… Big Cree… 2018…       3  41.4 -81.8
-##  5 cangoo      Canada … Branta … L416… Big Cree… 2018…      54  41.4 -81.8
-##  6 blujay      Blue Jay Cyanoci… L416… Big Cree… 2018…       2  41.4 -81.8
-##  7 amecro      America… Corvus … L500… Hueston … 2018…       1  39.6 -84.8
-##  8 carwre      Carolin… Thryoth… L500… Hueston … 2018…       3  39.6 -84.8
-##  9 bongul      Bonapar… Chroico… L500… Hueston … 2018…       1  39.6 -84.8
-## 10 barswa      Barn Sw… Hirundo… L500… Hueston … 2018…       1  39.6 -84.8
-## # ... with 3 more variables: obsValid <lgl>, obsReviewed <lgl>,
+##    speciesCode comName sciName locId locName obsDt howMany   lat   lng
+##    <chr>       <chr>   <chr>   <chr> <chr>   <chr>   <int> <dbl> <dbl>
+##  1 amekes      Americ… Falco … L813… Washbu… 2019…       1  40.7 -83.3
+##  2 turvul      Turkey… Cathar… L813… Washbu… 2019…       1  40.7 -83.3
+##  3 bkcchi      Black-… Poecil… L805… Rocky … 2019…       4  41.4 -81.9
+##  4 tuftit      Tufted… Baeolo… L805… Rocky … 2019…       1  41.4 -81.9
+##  5 reshaw      Red-sh… Buteo … L805… Rocky … 2019…       1  41.4 -81.9
+##  6 rebwoo      Red-be… Melane… L805… Rocky … 2019…       1  41.4 -81.9
+##  7 mallar3     Mallard Anas p… L805… Rocky … 2019…       4  41.4 -81.9
+##  8 houfin      House … Haemor… L805… Rocky … 2019…       6  41.4 -81.9
+##  9 dowwoo      Downy … Dryoba… L805… Rocky … 2019…       2  41.4 -81.9
+## 10 cangoo      Canada… Branta… L805… Rocky … 2019…      14  41.4 -81.9
+## # … with 3 more variables: obsValid <lgl>, obsReviewed <lgl>,
 ## #   locationPrivate <lgl>
 ```
 
@@ -272,20 +272,20 @@ ebirdfreq(loctype = 'hotspots', loc = 'L196159')
 ```
 
 ```
-## # A tibble: 9,072 x 4
+## # A tibble: 9,408 x 4
 ##    comName                     monthQt   frequency sampleSize
 ##    <chr>                       <chr>         <dbl>      <dbl>
-##  1 Snow Goose                  January-1     0.           27.
-##  2 Greater White-fronted Goose January-1     0.           27.
-##  3 Cackling Goose              January-1     0.           27.
-##  4 Canada Goose                January-1     0.           27.
-##  5 Cackling/Canada Goose       January-1     0.           27.
-##  6 Trumpeter Swan              January-1     0.           27.
-##  7 Wood Duck                   January-1     0.185        27.
-##  8 Blue-winged Teal            January-1     0.           27.
-##  9 Cinnamon Teal               January-1     0.           27.
-## 10 Blue-winged/Cinnamon Teal   January-1     0.           27.
-## # ... with 9,062 more rows
+##  1 Snow Goose                  January-1     0             33
+##  2 Greater White-fronted Goose January-1     0             33
+##  3 Cackling Goose              January-1     0             33
+##  4 Canada Goose                January-1     0             33
+##  5 Cackling/Canada Goose       January-1     0             33
+##  6 Trumpeter Swan              January-1     0             33
+##  7 Wood Duck                   January-1     0.152         33
+##  8 Blue-winged Teal            January-1     0             33
+##  9 Cinnamon Teal               January-1     0             33
+## 10 Blue-winged/Cinnamon Teal   January-1     0             33
+## # … with 9,398 more rows
 ```
 
 Same, but in wide format (for making bar charts)
@@ -296,20 +296,20 @@ ebirdfreq(loctype = 'hotspots', loc = 'L196159', long = FALSE)
 ```
 
 ```
-## # A tibble: 190 x 49
-##    comName    `January-1` `January-2` `January-3` `January-4` `February-1`
-##    <chr>            <dbl>       <dbl>       <dbl>       <dbl>        <dbl>
-##  1 Sample Si…      27.0       27.0       39.0        102.          41.0   
-##  2 Snow Goose       0.         0.         0.           0.           0.    
-##  3 Greater W…       0.         0.         0.           0.           0.    
-##  4 Cackling …       0.         0.         0.           0.           0.    
-##  5 Canada Go…       0.         0.         0.00150      0.0980       0.220 
-##  6 Cackling/…       0.         0.         0.           0.           0.    
-##  7 Trumpeter…       0.         0.         0.           0.           0.    
-##  8 Wood Duck        0.185      0.0370     0.           0.0196       0.0488
-##  9 Blue-wing…       0.         0.         0.           0.           0.    
-## 10 Cinnamon …       0.         0.         0.           0.           0.    
-## # ... with 180 more rows, and 43 more variables: `February-2` <dbl>,
+## # A tibble: 197 x 49
+##    comName `January-1` `January-2` `January-3` `January-4` `February-1`
+##    <chr>         <dbl>       <dbl>       <dbl>       <dbl>        <dbl>
+##  1 Sample…      33         32          43         113           47     
+##  2 Snow G…       0          0           0           0            0     
+##  3 Greate…       0          0           0           0            0     
+##  4 Cackli…       0          0           0           0            0     
+##  5 Canada…       0          0.0312      0.0015      0.106        0.191 
+##  6 Cackli…       0          0           0           0            0     
+##  7 Trumpe…       0          0           0           0            0     
+##  8 Wood D…       0.152      0.0312      0           0.0177       0.0426
+##  9 Blue-w…       0          0           0           0            0     
+## 10 Cinnam…       0          0           0           0            0     
+## # … with 187 more rows, and 43 more variables: `February-2` <dbl>,
 ## #   `February-3` <dbl>, `February-4` <dbl>, `March-1` <dbl>,
 ## #   `March-2` <dbl>, `March-3` <dbl>, `March-4` <dbl>, `April-1` <dbl>,
 ## #   `April-2` <dbl>, `April-3` <dbl>, `April-4` <dbl>, `May-1` <dbl>,
@@ -333,20 +333,20 @@ ebirdfreq(loctype = 'states', loc = 'CA-BC')
 ```
 
 ```
-## # A tibble: 35,424 x 4
-##    comName                                   monthQt  frequency sampleSize
-##    <chr>                                     <chr>        <dbl>      <dbl>
-##  1 Fulvous Whistling-Duck                    January… 0.            14197.
-##  2 Emperor Goose                             January… 0.00150       14197.
-##  3 Snow Goose                                January… 0.0279        14197.
-##  4 Ross's Goose                              January… 0.            14197.
-##  5 Snow x Ross's Goose (hybrid)              January… 0.            14197.
-##  6 Snow/Ross's Goose                         January… 0.            14197.
-##  7 Swan Goose (Domestic type)                January… 0.0000704     14197.
-##  8 Graylag x Swan Goose (Domestic type) (hy… January… 0.            14197.
-##  9 Greater White-fronted Goose               January… 0.00768       14197.
-## 10 Pink-footed Goose                         January… 0.            14197.
-## # ... with 35,414 more rows
+## # A tibble: 36,048 x 4
+##    comName                                    monthQt  frequency sampleSize
+##    <chr>                                      <chr>        <dbl>      <dbl>
+##  1 Fulvous Whistling-Duck                     January… 0              16870
+##  2 Emperor Goose                              January… 0              16870
+##  3 Snow Goose                                 January… 0.0281         16870
+##  4 Ross's Goose                               January… 0              16870
+##  5 Snow x Ross's Goose (hybrid)               January… 0              16870
+##  6 Snow/Ross's Goose                          January… 0              16870
+##  7 Swan Goose (Domestic type)                 January… 0.0000593      16870
+##  8 Graylag x Swan Goose (Domestic type) (hyb… January… 0              16870
+##  9 Greater White-fronted Goose                January… 0.00765        16870
+## 10 Pink-footed Goose                          January… 0              16870
+## # … with 36,038 more rows
 ```
 
 Or county
@@ -357,20 +357,20 @@ ebirdfreq(loctype = 'counties', loc = 'CA-BC-GV')
 ```
 
 ```
-## # A tibble: 24,624 x 4
-##    comName                         monthQt   frequency sampleSize
-##    <chr>                           <chr>         <dbl>      <dbl>
-##  1 Emperor Goose                   January-1   0.           4714.
-##  2 Snow Goose                      January-1   0.0653       4714.
-##  3 Ross's Goose                    January-1   0.           4714.
-##  4 Snow/Ross's Goose               January-1   0.           4714.
-##  5 Greater White-fronted Goose     January-1   0.00530      4714.
-##  6 Brant                           January-1   0.0255       4714.
-##  7 Cackling Goose                  January-1   0.0119       4714.
-##  8 Canada Goose                    January-1   0.200        4714.
-##  9 Graylag x Canada Goose (hybrid) January-1   0.           4714.
-## 10 Cackling/Canada Goose           January-1   0.00170      4714.
-## # ... with 24,614 more rows
+## # A tibble: 25,536 x 4
+##    comName                                    monthQt  frequency sampleSize
+##    <chr>                                      <chr>        <dbl>      <dbl>
+##  1 Emperor Goose                              January…   0             5411
+##  2 Snow Goose                                 January…   0.0641        5411
+##  3 Ross's Goose                               January…   0             5411
+##  4 Snow/Ross's Goose                          January…   0             5411
+##  5 Greater White-fronted Goose                January…   0.00573       5411
+##  6 Domestic goose sp. (Domestic type)         January…   0             5411
+##  7 Brant                                      January…   0.0307        5411
+##  8 Cackling Goose                             January…   0.0163        5411
+##  9 Canada Goose                               January…   0.200         5411
+## 10 Swan Goose (Domestic type) x Canada Goose… January…   0             5411
+## # … with 25,526 more rows
 ```
 
 Obtain frequency data within a range of years and months
@@ -385,17 +385,17 @@ ebirdfreq(loctype = 'hotspots', loc = 'L196159', startyear = 2010,
 ## # A tibble: 3,792 x 4
 ##    comName                             monthQt   frequency sampleSize
 ##    <chr>                               <chr>         <dbl>      <dbl>
-##  1 Canada Goose                        January-1     0.           10.
-##  2 Wood Duck                           January-1     0.400        10.
-##  3 Northern Shoveler                   January-1     0.800        10.
-##  4 Gadwall                             January-1     0.           10.
-##  5 Eurasian Wigeon                     January-1     0.400        10.
-##  6 American Wigeon                     January-1     1.00         10.
-##  7 Eurasian x American Wigeon (hybrid) January-1     0.           10.
-##  8 Mallard                             January-1     1.00         10.
-##  9 Northern Pintail                    January-1     0.           10.
-## 10 Green-winged Teal                   January-1     0.           10.
-## # ... with 3,782 more rows
+##  1 Canada Goose                        January-1       0           10
+##  2 Wood Duck                           January-1       0.4         10
+##  3 Northern Shoveler                   January-1       0.8         10
+##  4 Gadwall                             January-1       0           10
+##  5 Eurasian Wigeon                     January-1       0.4         10
+##  6 American Wigeon                     January-1       1           10
+##  7 Eurasian x American Wigeon (hybrid) January-1       0           10
+##  8 Mallard                             January-1       1           10
+##  9 Northern Pintail                    January-1       0           10
+## 10 Green-winged Teal                   January-1       0           10
+## # … with 3,782 more rows
 ```
 
 
@@ -409,20 +409,20 @@ ebirdnotable(lat = 42, lng = -70)
 ```
 
 ```
-## # A tibble: 802 x 12
-##    speciesCode comName  sciName  locId locName   obsDt howMany   lat   lng
-##    <chr>       <chr>    <chr>    <chr> <chr>     <chr>   <int> <dbl> <dbl>
-##  1 rthhum      Ruby-th… Archilo… L584… US-New H… 2018…       1  42.9 -71.0
-##  2 ameoys      America… Haemato… L765… Basket I… 2018…       2  43.5 -70.4
-##  3 rthhum      Ruby-th… Archilo… L497… stakeout… 2018…       1  42.3 -71.6
-##  4 ycnher      Yellow-… Nyctana… L382… Lake War… 2018…       1  42.4 -72.6
-##  5 ovenbi1     Ovenbird Seiurus… L168… Brenton … 2018…       1  41.5 -71.4
-##  6 hoowar      Hooded … Setopha… L514… 000  31 … 2018…       1  43.3 -71.0
-##  7 ycnher      Yellow-… Nyctana… L796… Mt. Warn… 2018…       1  42.4 -72.6
-##  8 ycnher      Yellow-… Nyctana… L796… Lake War… 2018…       1  42.4 -72.6
-##  9 ycnher      Yellow-… Nyctana… L796… Lake War… 2018…       1  42.4 -72.6
-## 10 sora        Sora     Porzana… L420… Tiogue L… 2018…       1  41.7 -71.6
-## # ... with 792 more rows, and 3 more variables: obsValid <lgl>,
+## # A tibble: 1,710 x 12
+##    speciesCode comName sciName locId locName obsDt howMany   lat   lng
+##    <chr>       <chr>   <chr>   <chr> <chr>   <chr>   <int> <dbl> <dbl>
+##  1 buhvir      Blue-h… Vireo … L100… 92–98 … 2019…       1  42.4 -72.6
+##  2 yebcuc      Yellow… Coccyz… L167… Rachel… 2019…       1  43.4 -70.4
+##  3 redhea      Redhead Aythya… L131… Sabatt… 2019…       1  44.1 -70.1
+##  4 pinwar      Pine W… Setoph… L345… Home    2019…       1  42.3 -72.4
+##  5 comgal1     Common… Gallin… L100… Trusto… 2019…       1  41.4 -71.6
+##  6 tufduc      Tufted… Aythya… L100… Trusto… 2019…       1  41.4 -71.6
+##  7 grycat      Gray C… Dumete… L271… Dahl W… 2019…       1  44.0 -71.1
+##  8 trokin      Tropic… Tyrann… L593… Rock M… 2019…       1  42.4 -71.2
+##  9 reevir1     Red-ey… Vireo … L813… P. J. … 2019…       1  41.7 -70.9
+## 10 wessan      Wester… Calidr… L830… Plum I… 2019…       1  42.8 -70.8
+## # … with 1,700 more rows, and 3 more variables: obsValid <lgl>,
 ## #   obsReviewed <lgl>, locationPrivate <lgl>
 ```
 
@@ -434,23 +434,82 @@ ebirdnotable(locID = 'US-NY-109')
 ```
 
 ```
-## # A tibble: 71 x 12
-##    speciesCode comName   sciName  locId locName  obsDt howMany   lat   lng
-##    <chr>       <chr>     <chr>    <chr> <chr>    <chr>   <int> <dbl> <dbl>
-##  1 buggna      Blue-gra… Poliopt… L177… Sapsuck… 2018…       1  42.5 -76.4
-##  2 comgal1     Common G… Gallinu… L518… Hile Sc… 2018…       1  42.5 -76.4
-##  3 buggna1     Blue-gra… Poliopt… L124… Sapsuck… 2018…       1  42.5 -76.5
-##  4 buggna      Blue-gra… Poliopt… L515… Sapsuck… 2018…       1  42.5 -76.5
-##  5 comnig      Common N… Chordei… L518… Hile Sc… 2018…       1  42.5 -76.4
-##  6 blkvul      Black Vu… Coragyp… L398… 14## Ha… 2018…       1  42.5 -76.5
-##  7 blkvul      Black Vu… Coragyp… L286… Sapsuck… 2018…       1  42.5 -76.5
-##  8 blkvul      Black Vu… Coragyp… L212… Stevens… 2018…       1  42.4 -76.4
-##  9 sora        Sora      Porzana… L594… Ridgewa… 2018…       1  42.3 -76.4
-## 10 conwar      Connecti… Opororn… L446… Durland… 2018…       1  42.4 -76.4
-## # ... with 61 more rows, and 3 more variables: obsValid <lgl>,
+## # A tibble: 49 x 12
+##    speciesCode comName sciName locId locName obsDt howMany   lat   lng
+##    <chr>       <chr>   <chr>   <chr> <chr>   <chr>   <int> <dbl> <dbl>
+##  1 blkvul      Black … Coragy… L212… Steven… 2019…       2  42.4 -76.4
+##  2 blkvul      Black … Coragy… L212… Steven… 2019…       2  42.4 -76.4
+##  3 whevir      White-… Vireo … L100… Monroe… 2019…       1  42.4 -76.5
+##  4 whevir      White-… Vireo … L542… Norths… 2019…       1  42.4 -76.5
+##  5 whevir      White-… Vireo … L100… 101–19… 2019…       1  42.4 -76.5
+##  6 andduc1     Andean… Oxyura… L100… Bogota  2019…       2  42.5 -76.5
+##  7 whtdov1     White-… Leptot… L100… Bogota  2019…      11  42.5 -76.5
+##  8 whtdov      White-… Leptot… L100… Bogota  2019…       3  42.5 -76.5
+##  9 wfwduc1     White-… Dendro… L100… Bogota  2019…       1  42.5 -76.5
+## 10 musduc      Muscov… Cairin… L100… Bogota  2019…       3  42.5 -76.5
+## # … with 39 more rows, and 3 more variables: obsValid <lgl>,
 ## #   obsReviewed <lgl>, locationPrivate <lgl>
 ```
 
+### Historic Observations
+
+Search for historic observations on a date at a region 
+
+
+```r
+ebirdhistorical(loc = 'US-VA-003', date = '2019-02-14', max = 10)
+```
+
+```
+## # A tibble: 10 x 12
+##    speciesCode comName sciName locId locName obsDt howMany   lat   lng
+##    <chr>       <chr>   <chr>   <chr> <chr>   <chr>   <int> <dbl> <dbl>
+##  1 cangoo      Canada… Branta… L139… Lickin… 2019…      30  38.1 -78.7
+##  2 mallar3     Mallard Anas p… L139… Lickin… 2019…       5  38.1 -78.7
+##  3 gnwtea      Green-… Anas c… L139… Lickin… 2019…       8  38.1 -78.7
+##  4 killde      Killde… Charad… L139… Lickin… 2019…       1  38.1 -78.7
+##  5 baleag      Bald E… Haliae… L139… Lickin… 2019…       1  38.1 -78.7
+##  6 belkin1     Belted… Megace… L139… Lickin… 2019…       1  38.1 -78.7
+##  7 carwre      Caroli… Thryot… L139… Lickin… 2019…       1  38.1 -78.7
+##  8 whtspa      White-… Zonotr… L139… Lickin… 2019…       2  38.1 -78.7
+##  9 norcar      Northe… Cardin… L139… Lickin… 2019…       1  38.1 -78.7
+## 10 canvas      Canvas… Aythya… L331… Montic… 2019…      19  38.0 -78.5
+## # … with 3 more variables: obsValid <lgl>, obsReviewed <lgl>,
+## #   locationPrivate <lgl>
+```
+
+or a hotspot
+
+
+```r
+ebirdhistorical(loc = 'L196159', date = '2019-02-14', fieldSet = 'full')
+```
+
+```
+## # A tibble: 14 x 27
+##    speciesCode comName sciName locId locName obsDt howMany   lat   lng
+##    <chr>       <chr>   <chr>   <chr> <chr>   <chr>   <int> <dbl> <dbl>
+##  1 annhum      Anna's… Calypt… L196… Vancou… 2019…       4  49.3 -123.
+##  2 ribgul      Ring-b… Larus … L196… Vancou… 2019…       4  49.3 -123.
+##  3 glwgul      Glauco… Larus … L196… Vancou… 2019…      29  49.3 -123.
+##  4 norcro      Northw… Corvus… L196… Vancou… 2019…     100  49.3 -123.
+##  5 bkcchi      Black-… Poecil… L196… Vancou… 2019…      16  49.3 -123.
+##  6 bushti      Bushtit Psaltr… L196… Vancou… 2019…      20  49.3 -123.
+##  7 pacwre1     Pacifi… Troglo… L196… Vancou… 2019…       1  49.3 -123.
+##  8 houfin      House … Haemor… L196… Vancou… 2019…       2  49.3 -123.
+##  9 purfin      Purple… Haemor… L196… Vancou… 2019…       3  49.3 -123.
+## 10 amegfi      Americ… Spinus… L196… Vancou… 2019…      15  49.3 -123.
+## 11 daejun      Dark-e… Junco … L196… Vancou… 2019…      37  49.3 -123.
+## 12 sonspa      Song S… Melosp… L196… Vancou… 2019…      12  49.3 -123.
+## 13 spotow      Spotte… Pipilo… L196… Vancou… 2019…       1  49.3 -123.
+## 14 rewbla      Red-wi… Agelai… L196… Vancou… 2019…       6  49.3 -123.
+## # … with 18 more variables: obsValid <lgl>, obsReviewed <lgl>,
+## #   locationPrivate <lgl>, subnational2Code <chr>, subnational2Name <chr>,
+## #   subnational1Code <chr>, subnational1Name <chr>, countryCode <chr>,
+## #   countryName <chr>, userDisplayName <chr>, subId <chr>, obsId <chr>,
+## #   checklistId <chr>, presenceNoted <lgl>, hasComments <lgl>,
+## #   firstName <chr>, lastName <chr>, hasRichMedia <lgl>
+```
 
 ### eBird taxonomy
 
@@ -462,20 +521,20 @@ ebirdtaxonomy()
 ```
 
 ```
-## # A tibble: 16,248 x 14
-##    sciName        comName     speciesCode category taxonOrder bandingCodes
-##    <chr>          <chr>       <chr>       <chr>         <dbl> <chr>       
-##  1 Struthio came… Common Ost… ostric2     species          1. <NA>        
-##  2 Struthio moly… Somali Ost… ostric3     species          6. <NA>        
-##  3 Struthio came… Common/Som… y00934      slash            7. <NA>        
-##  4 Rhea americana Greater Rh… grerhe1     species          8. <NA>        
-##  5 Rhea pennata   Lesser Rhea lesrhe2     species         14. <NA>        
-##  6 Rhea pennata … Lesser Rhe… lesrhe4     issf            15. <NA>        
-##  7 Rhea pennata … Lesser Rhe… lesrhe3     issf            18. <NA>        
-##  8 Nothocercus j… Tawny-brea… tabtin1     species         19. <NA>        
-##  9 Nothocercus b… Highland T… higtin1     species         20. HITI        
-## 10 Nothocercus b… Highland T… higtin2     issf            21. <NA>        
-## # ... with 16,238 more rows, and 8 more variables: comNameCodes <chr>,
+## # A tibble: 16,513 x 14
+##    sciName comName speciesCode category taxonOrder bandingCodes
+##    <chr>   <chr>   <chr>       <chr>         <dbl> <chr>       
+##  1 Struth… Common… ostric2     species           1 <NA>        
+##  2 Struth… Somali… ostric3     species           6 <NA>        
+##  3 Struth… Common… y00934      slash             7 <NA>        
+##  4 Rhea a… Greate… grerhe1     species           8 <NA>        
+##  5 Rhea p… Lesser… lesrhe2     species          14 <NA>        
+##  6 Rhea p… Lesser… lesrhe4     issf             15 <NA>        
+##  7 Rhea p… Lesser… lesrhe3     issf             18 <NA>        
+##  8 Nothoc… Tawny-… tabtin1     species          19 <NA>        
+##  9 Nothoc… Highla… higtin1     species          20 HITI        
+## 10 Nothoc… Highla… higtin2     issf             21 <NA>        
+## # … with 16,503 more rows, and 8 more variables: comNameCodes <chr>,
 ## #   sciNameCodes <chr>, order <chr>, familyComName <chr>,
 ## #   familySciName <chr>, reportAs <chr>, extinct <lgl>, extinctYear <int>
 ```
@@ -488,31 +547,31 @@ ebirdtaxonomy(cat = "hybrid")
 ```
 
 ```
-## # A tibble: 415 x 11
-##    sciName      comName       speciesCode category taxonOrder bandingCodes
-##    <chr>        <chr>         <chr>       <chr>         <dbl> <chr>       
-##  1 Dendrocygna… Spotted x Wh… x00721      hybrid         219. <NA>        
-##  2 Dendrocygna… Black-bellie… x00775      hybrid         224. <NA>        
-##  3 Dendrocygna… Black-bellie… x00875      hybrid         226. <NA>        
-##  4 Anser caeru… Snow x Ross'… sxrgoo1     hybrid         243. SRGH        
-##  5 Anser anser… Graylag x Sw… x00776      hybrid         251. <NA>        
-##  6 Anser indic… Bar-headed x… x00755      hybrid         259. <NA>        
-##  7 Anser caeru… Snow x Great… x00627      hybrid         260. <NA>        
-##  8 Anser caeru… Snow Goose x… x00685      hybrid         280. <NA>        
-##  9 Anser brach… Pink-footed … x00756      hybrid         282. <NA>        
-## 10 Anser albif… Greater Whit… x00757      hybrid         283. <NA>        
-## # ... with 405 more rows, and 5 more variables: comNameCodes <chr>,
+## # A tibble: 462 x 11
+##    sciName comName speciesCode category taxonOrder bandingCodes
+##    <chr>   <chr>   <chr>       <chr>         <dbl> <chr>       
+##  1 Dendro… Spotte… x00721      hybrid          219 <NA>        
+##  2 Dendro… Black-… x00775      hybrid          224 <NA>        
+##  3 Dendro… White-… x00938      hybrid          226 <NA>        
+##  4 Dendro… Black-… x00875      hybrid          227 <NA>        
+##  5 Anser … Snow x… sxrgoo1     hybrid          244 SRGH        
+##  6 Anser … Grayla… x00776      hybrid          252 <NA>        
+##  7 Anser … Bar-he… x00755      hybrid          260 <NA>        
+##  8 Anser … Snow x… x00627      hybrid          261 <NA>        
+##  9 Anser … Snow G… x00685      hybrid          281 <NA>        
+## 10 Anser … Pink-f… x00756      hybrid          283 <NA>        
+## # … with 452 more rows, and 5 more variables: comNameCodes <chr>,
 ## #   sciNameCodes <chr>, order <chr>, familyComName <chr>,
 ## #   familySciName <chr>
 ```
 
-### Check eBird region
+## Information on a given region or hotspot
 
-Obtain information on any region 
+Obtain detailed information on any valid eBird region
 
 
 ```r
-ebirdregioninfo(loc = 'CA-BC-GV')
+ebirdregioninfo("CA-BC-GV")
 ```
 
 ```
@@ -520,4 +579,21 @@ ebirdregioninfo(loc = 'CA-BC-GV')
 ##   region                                     minX  maxX  minY  maxY
 ##   <chr>                                     <dbl> <dbl> <dbl> <dbl>
 ## 1 Metro Vancouver, British Columbia, Canada -123. -122.  49.0  49.6
+```
+
+or hotspot
+
+
+```r
+ebirdregioninfo("L196159")
+```
+
+```
+## # A tibble: 1 x 16
+##   locId name  latitude longitude countryCode countryName subnational1Name
+##   <chr> <chr>    <dbl>     <dbl> <chr>       <chr>       <chr>           
+## 1 L196… Vanc…     49.3     -123. CA          Canada      British Columbia
+## # … with 9 more variables: subnational1Code <chr>, subnational2Code <chr>,
+## #   subnational2Name <chr>, isHotspot <lgl>, locName <chr>, lat <dbl>,
+## #   lng <dbl>, hierarchicalName <chr>, locID <chr>
 ```
