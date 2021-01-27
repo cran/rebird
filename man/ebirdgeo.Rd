@@ -4,15 +4,26 @@
 \alias{ebirdgeo}
 \title{Sightings at location determined by latitude/longitude}
 \usage{
-ebirdgeo(species = NULL, lat = NULL, lng = NULL, dist = NULL,
-  back = NULL, max = NULL, locale = NULL, provisional = FALSE,
-  hotspot = FALSE, sleep = 0, key = NULL, ...)
+ebirdgeo(
+  species = NULL,
+  lat = NULL,
+  lng = NULL,
+  dist = NULL,
+  back = NULL,
+  max = NULL,
+  locale = NULL,
+  provisional = FALSE,
+  hotspot = FALSE,
+  sleep = 0,
+  key = NULL,
+  ...
+)
 }
 \arguments{
 \item{species}{Species code of the species of interest. Scientific names can be specified if wrapped around the 
 \code{\link{species_code}} function. Defaults to NULL, so sightings for all species are returned.
 See eBird taxonomy for more information:
-http://ebird.org/content/ebird/about/ebird-taxonomy}
+\url{https://ebird.org/science/use-ebird-data/the-ebird-taxonomy}.}
 
 \item{lat}{Decimal latitude. value between -90.00 and 90.00, up to two
 decimal places of precision. Defaults to latitude based on IP.}
@@ -21,7 +32,7 @@ decimal places of precision. Defaults to latitude based on IP.}
 two decimal places of precision. Defaults to longitude based on IP.}
 
 \item{dist}{Distance defining radius of interest from given lat/lng in
-kilometers (between 0 and 50, defaults to 25)}
+kilometers (between 0 and 50, defaults to 25).}
 
 \item{back}{Number of days back to look for observations (between
 1 and 30, defaults to 14).}
@@ -30,7 +41,7 @@ kilometers (between 0 and 50, defaults to 25)}
 (between 1 and 10000, defaults to all).}
 
 \item{locale}{Language/locale of response (when translations are available).
-See http://java.sun.com/javase/6/docs/api/java/util/Locale.html
+See https://docs.oracle.com/javase/6/docs/api/java/util/Locale.html
 (defaults to en_US).}
 
 \item{provisional}{Should flagged records that have not been reviewed
@@ -43,7 +54,7 @@ be included? (defaults to FALSE).}
 zero. Set to higher number if you are using this function in a loop with
 many API calls).}
 
-\item{key}{ebird API key. You can obtain one from https://ebird.org/api/keygen.
+\item{key}{eBird API key. You can obtain one from https://ebird.org/api/keygen.
 We strongly recommend storing it in your \code{.Renviron} file as an 
 environment variable called \code{EBIRD_KEY}.}
 

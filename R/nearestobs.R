@@ -2,14 +2,12 @@
 #'
 #' Returns the most recent and nearest reported sighting information
 #' with observations of a species.
-#'
-#' @export
 #' 
 #' @param speciesCode (required) Species code of the species of interest. 
 #'    Scientific names can be specified if wrapped around the 
 #'    \code{\link{species_code}} function. Defaults to NULL, so sightings for all species are returned.
 #'    See eBird taxonomy for more information:
-#'    http://ebird.org/content/ebird/about/ebird-taxonomy
+#'    \url{https://ebird.org/science/use-ebird-data/the-ebird-taxonomy}.
 #' @param lat Decimal latitude. value between -90.00 and 90.00, up to two
 #'    decimal places of precision. Defaults to latitude based on IP.
 #' @param lng Decimal longitude. value between -180.00 and 180.00, up to
@@ -21,7 +19,7 @@
 #' @param max Maximum number of result rows to return in this request
 #'    (between 1 and 10000, defaults to all).
 #' @param locale Language/locale of response (when translations are available).
-#'    See http://java.sun.com/javase/6/docs/api/java/util/Locale.html
+#'    See \url{https://docs.oracle.com/javase/6/docs/api/java/util/Locale.html}
 #'    (defaults to en_US).
 #' @param provisional Should flagged records that have not been reviewed
 #'    be included? (defaults to FALSE).
@@ -30,25 +28,28 @@
 #' @param sleep Time (in seconds) before function sends API call (defaults to
 #'    zero. Set to higher number if you are using this function in a loop with
 #'    many API calls).
-#' @param key ebird API key. You can obtain one from https://ebird.org/api/keygen.
+#' @param key eBird API key. You can obtain one from https://ebird.org/api/keygen.
 #'    We strongly recommend storing it in your \code{.Renviron} file as an 
 #'    environment variable called \code{EBIRD_KEY}.
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
 #' @return A data.frame containing the collected information:
+#' @return "speciesCode": species code
 #' @return "comName": species common name
-#' @return "howMany": number of individuals observed, NA if only presence was noted
-#' @return "lat": latitude of the location.
-#' @return "lng": longitude of the location.
-#' @return "locID": unique identifier for the location
+#' @return "sciName" species' scientific name
+#' @return "locId": unique identifier for the location
 #' @return "locName": location name
-#' @return "locationPrivate": TRUE if location is not a birding hotspot
 #' @return "obsDt": observation date formatted according to ISO 8601
 #'    (e.g. 'YYYY-MM-DD', or 'YYYY-MM-DD hh:mm'). Hours and minutes are excluded
 #'    if the observer did not report an observation time.
-#' @return "obsReviewed": TRUE if observation has been reviewed, FALSE otherwise
+#' @return "howMany": number of individuals observed, NA if only presence was noted
+#' @return "lat": latitude of the location.
+#' @return "lng": longitude of the location.
 #' @return "obsValid": TRUE if observation has been deemed valid by either the
 #'    automatic filters or a regional viewer, FALSE otherwise
-#' @return "sciName" species' scientific name
+#' @return "obsReviewed": TRUE if observation has been reviewed, FALSE otherwise
+#' @return "locationPrivate": TRUE if location is not a birding hotspot
+#' @return "subId": submission ID
+#' @export
 #' 
 #' @author Rafael Maia \email{rm72@@zips.uakron.edu},
 #'    Sebastian Pardo \email{sebpardo@@gmail.com}

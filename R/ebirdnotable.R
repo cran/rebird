@@ -26,7 +26,7 @@
 #' @param sleep Time (in seconds) before function sends API call (defaults to
 #'    zero.  Set to higher number if you are using this function in a loop with
 #'    many API calls).
-#' @param key ebird API key. You can obtain one from https://ebird.org/api/keygen.
+#' @param key eBird API key. You can obtain one from https://ebird.org/api/keygen.
 #'    We strongly recommend storing it in your \code{.Renviron} file as an 
 #'    environment variable called \code{EBIRD_KEY}.
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
@@ -37,7 +37,7 @@
 #' @return "speciesCode": species code
 #' @return "comName": species common name
 #' @return "sciName" species' scientific name
-#' @return "locID": unique identifier for the location
+#' @return "locId": unique identifier for the location
 #' @return "locName": location name
 #' @return "obsDt": observation date formatted according to ISO 8601
 #'    (e.g. 'YYYY-MM-DD', or 'YYYY-MM-DD hh:mm'). Hours and minutes are excluded
@@ -49,6 +49,7 @@
 #' @return "obsReviewed": TRUE if observation has been reviewed, FALSE otherwise
 #' @return "locationPrivate": TRUE if location is not a birding hotspot
 #'    automatic filters or a regional viewer, FALSE otherwise
+#' @return "subId": submission ID
 #' @return "subnational2Code": county code (returned if simple=FALSE)
 #' @return "subnational2Name": county name (returned if simple=FALSE)
 #' @return "subnational1Code": state/province ISO code (returned if simple=FALSE)
@@ -56,7 +57,6 @@
 #' @return "countryCode": country ISO code (returned if simple=FALSE)
 #' @return "countryName": country name (returned if simple=FALSE)
 #' @return "userDisplayName": observer's eBird username (returned if simple=FALSE)
-#' @return "subID": submission ID (returned if simple=FALSE)
 #' @return "obsID": observation ID (returned if simple=FALSE)
 #' @return "checklistID": checklist ID (returned if simple=FALSE)
 #' @return "presenceNoted": 'true' if user marked presence but did not count the

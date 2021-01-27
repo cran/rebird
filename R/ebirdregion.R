@@ -11,7 +11,7 @@
 #' which will return the eBird species code.
 #' Defaults to NULL, in which case sightings for all species are returned.
 #' See eBird taxonomy for more information:
-#' http://ebird.org/content/ebird/about/ebird-taxonomy
+#' https://ebird.org/science/use-ebird-data/the-ebird-taxonomy
 #' @param back Number of days back to look for observations (between
 #'    1 and 30, defaults to 14).
 #' @param max Maximum number of result rows to return in this request
@@ -28,20 +28,22 @@
 #'    many API calls).
 #' @inheritParams ebirdtaxonomy
 #' @return A data.frame containing the collected information:
+#' @return "speciesCode": species code
 #' @return "comName": species common name
-#' @return "howMany": number of individuals observed, NA if only presence was noted
-#' @return "lat": latitude of the location
-#' @return "lng": longitude of the location
+#' @return "sciName" species' scientific name
 #' @return "locID": unique identifier for the location
 #' @return "locName": location name
-#' @return "locationPrivate": TRUE if location is not a birding hotspot
 #' @return "obsDt": observation date formatted according to ISO 8601
 #'    (e.g. 'YYYY-MM-DD', or 'YYYY-MM-DD hh:mm'). Hours and minutes are excluded
 #'    if the observer did not report an observation time.
-#' @return "obsReviewed": TRUE if observation has been reviewed, FALSE otherwise
+#' @return "howMany": number of individuals observed, NA if only presence was noted
+#' @return "lat": latitude of the location
+#' @return "lng": longitude of the location
 #' @return "obsValid": TRUE if observation has been deemed valid by either the
 #'    automatic filters or a regional viewer, FALSE otherwise
-#' @return "sciName" species' scientific name
+#' @return "obsReviewed": TRUE if observation has been reviewed, FALSE otherwise
+#' @return "locationPrivate": TRUE if location is not a birding hotspot
+#' @return "subId": submission ID
 #' @export
 #' @examples \dontrun{
 #' ebirdregion(loc = 'US', species = 'btbwar')

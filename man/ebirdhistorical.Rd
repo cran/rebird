@@ -4,9 +4,19 @@
 \alias{ebirdhistorical}
 \title{Historic observations on a date at a region or hotspot}
 \usage{
-ebirdhistorical(loc, date, sortKey = "mrec", categories = "all",
-  max = 10000, fieldSet = "simple", provisional = FALSE,
-  limitToHotspots = FALSE, sleep = 0, key = NULL, ...)
+ebirdhistorical(
+  loc,
+  date,
+  sortKey = "mrec",
+  categories = "all",
+  max = 10000,
+  fieldSet = "simple",
+  provisional = FALSE,
+  limitToHotspots = FALSE,
+  sleep = 0,
+  key = NULL,
+  ...
+)
 }
 \arguments{
 \item{loc}{(required) Region code or locID (if a hotspot). Region code can
@@ -55,7 +65,7 @@ A data.frame containing the collected information:
 
 "sciName" species' scientific names
 
-"locID": unique identifier for the locations
+"locId": unique identifier for the locations
 
 "locName": location name
 
@@ -63,12 +73,16 @@ A data.frame containing the collected information:
    (e.g. 'YYYY-MM-DD', or 'YYYY-MM-DD hh:mm'). Hours and minutes are excluded 
    if the observer did not report an observation time
 
+"howMany": "howMany": number of individuals observed, NA if only presence was noted
+
 "obsValid": TRUE if observation has been deemed valid by either the 
    automatic filters or a regional viewer, FALSE otherwise
 
 "obsReviewed": TRUE if observation has been reviewed, FALSE otherwise
 
 "locationPrivate": TRUE if location is not a birding hotspot
+
+"subID": submission ID
 
 "subnational2Code": county code (returned if simple=FALSE)
 
@@ -83,8 +97,6 @@ A data.frame containing the collected information:
 "countryName": country name (returned if simple=FALSE)
 
 "userDisplayName": first and last name of the observer (returned if simple=FALSE)
-
-"subID": submission ID (returned if simple=FALSE)
 
 "obsID": observation ID (returned if simple=FALSE)
 
@@ -102,7 +114,7 @@ A data.frame containing the collected information:
 "lastName": observer's last name (returned if simple=FALSE)
 }
 \description{
-Returns sighting information reported in a given region or hotspot
+Returns a list of taxa reported in a given region or hotspot on a specific date
 }
 \examples{
 \dontrun{

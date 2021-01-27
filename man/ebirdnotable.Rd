@@ -4,9 +4,21 @@
 \alias{ebirdnotable}
 \title{Recent nearby notable observations}
 \usage{
-ebirdnotable(lat = NULL, lng = NULL, dist = NULL, locID = NULL,
-  region = NULL, back = NULL, max = NULL, provisional = FALSE,
-  hotspot = FALSE, simple = TRUE, sleep = 0, key = NULL, ...)
+ebirdnotable(
+  lat = NULL,
+  lng = NULL,
+  dist = NULL,
+  locID = NULL,
+  region = NULL,
+  back = NULL,
+  max = NULL,
+  provisional = FALSE,
+  hotspot = FALSE,
+  simple = TRUE,
+  sleep = 0,
+  key = NULL,
+  ...
+)
 }
 \arguments{
 \item{lat}{Decimal latitude. value between -90.00 and 90.00, up to two
@@ -43,7 +55,7 @@ be included? (defaults to FALSE)}
 zero.  Set to higher number if you are using this function in a loop with
 many API calls).}
 
-\item{key}{ebird API key. You can obtain one from https://ebird.org/api/keygen.
+\item{key}{eBird API key. You can obtain one from https://ebird.org/api/keygen.
 We strongly recommend storing it in your \code{.Renviron} file as an 
 environment variable called \code{EBIRD_KEY}.}
 
@@ -58,7 +70,7 @@ A data.frame containing the collected information:
 
 "sciName" species' scientific name
 
-"locID": unique identifier for the location
+"locId": unique identifier for the location
 
 "locName": location name
 
@@ -79,6 +91,8 @@ A data.frame containing the collected information:
 "locationPrivate": TRUE if location is not a birding hotspot
    automatic filters or a regional viewer, FALSE otherwise
 
+"subId": submission ID
+
 "subnational2Code": county code (returned if simple=FALSE)
 
 "subnational2Name": county name (returned if simple=FALSE)
@@ -92,8 +106,6 @@ A data.frame containing the collected information:
 "countryName": country name (returned if simple=FALSE)
 
 "userDisplayName": observer's eBird username (returned if simple=FALSE)
-
-"subID": submission ID (returned if simple=FALSE)
 
 "obsID": observation ID (returned if simple=FALSE)
 

@@ -4,9 +4,19 @@
 \alias{ebirdregion}
 \title{Recent observations at a region or hotspot}
 \usage{
-ebirdregion(loc, species = NULL, back = NULL, max = NULL,
-  locale = NULL, provisional = FALSE, hotspot = FALSE,
-  simple = TRUE, sleep = 0, key = NULL, ...)
+ebirdregion(
+  loc,
+  species = NULL,
+  back = NULL,
+  max = NULL,
+  locale = NULL,
+  provisional = FALSE,
+  hotspot = FALSE,
+  simple = TRUE,
+  sleep = 0,
+  key = NULL,
+  ...
+)
 }
 \arguments{
 \item{loc}{(required) Region code or locID (for hotspots). Region code can
@@ -19,7 +29,7 @@ you can wrap the scientific name in the \code{\link{species_code}} function
 which will return the eBird species code.
 Defaults to NULL, in which case sightings for all species are returned.
 See eBird taxonomy for more information:
-http://ebird.org/content/ebird/about/ebird-taxonomy}
+https://ebird.org/science/use-ebird-data/the-ebird-taxonomy}
 
 \item{back}{Number of days back to look for observations (between
 1 and 30, defaults to 14).}
@@ -28,8 +38,8 @@ http://ebird.org/content/ebird/about/ebird-taxonomy}
 (between 1 and 10000, defaults to all)}
 
 \item{locale}{Language/locale of response (when translations are available).
-See \url{http://java.sun.com/javase/6/docs/api/java/util/Locale.html} and 
-\url{https://help.ebird.org/customer/portal/articles/1596582-common-name-translations-in-ebird} 
+See \url{https://docs.oracle.com/javase/6/docs/api/java/util/Locale.html} and 
+\url{https://support.ebird.org/en/support/solutions/articles/48000804865-bird-names-in-ebird} 
 (defaults to en_US).}
 
 \item{provisional}{Should flagged records that have not been reviewed
@@ -46,7 +56,7 @@ be included? (defaults to FALSE)}
 zero.  Set to higher number if you are using this function in a loop with
 many API calls).}
 
-\item{key}{ebird API key. You can obtain one from https://ebird.org/api/keygen.
+\item{key}{eBird API key. You can obtain one from https://ebird.org/api/keygen.
 We strongly recommend storing it in your \code{.Renviron} file as an 
 environment variable called \code{EBIRD_KEY} to avoid having to constantly 
 supply the key, and to avoid accidentally sharing it publicly.}
@@ -56,7 +66,19 @@ supply the key, and to avoid accidentally sharing it publicly.}
 \value{
 A data.frame containing the collected information:
 
+"speciesCode": species code
+
 "comName": species common name
+
+"sciName" species' scientific name
+
+"locID": unique identifier for the location
+
+"locName": location name
+
+"obsDt": observation date formatted according to ISO 8601
+   (e.g. 'YYYY-MM-DD', or 'YYYY-MM-DD hh:mm'). Hours and minutes are excluded
+   if the observer did not report an observation time.
 
 "howMany": number of individuals observed, NA if only presence was noted
 
@@ -64,22 +86,14 @@ A data.frame containing the collected information:
 
 "lng": longitude of the location
 
-"locID": unique identifier for the location
-
-"locName": location name
-
-"locationPrivate": TRUE if location is not a birding hotspot
-
-"obsDt": observation date formatted according to ISO 8601
-   (e.g. 'YYYY-MM-DD', or 'YYYY-MM-DD hh:mm'). Hours and minutes are excluded
-   if the observer did not report an observation time.
-
-"obsReviewed": TRUE if observation has been reviewed, FALSE otherwise
-
 "obsValid": TRUE if observation has been deemed valid by either the
    automatic filters or a regional viewer, FALSE otherwise
 
-"sciName" species' scientific name
+"obsReviewed": TRUE if observation has been reviewed, FALSE otherwise
+
+"locationPrivate": TRUE if location is not a birding hotspot
+
+"subId": submission ID
 }
 \description{
 Returns the most recent sighting information reported in a given region or hotspot.

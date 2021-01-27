@@ -6,32 +6,36 @@
 \alias{rebird-package}
 \title{rebird: R Client for the eBird Database of Bird Observations}
 \description{
-A programmatic client for the eBird database, including functions
-    for searching for bird observations by geographic location (latitude,
-    longitude), eBird hotspots, location identifiers, by notable sightings, by
-    region, and by taxonomic name.
+A programmatic client for the eBird database 
+    (<https://ebird.org/home>), including functions for searching for bird 
+    observations by geographic location (latitude, longitude), eBird 
+    hotspots, location identifiers, by notable sightings, by region, and by 
+    taxonomic name.
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{http://github.com/ropensci/rebird}
-  \item Report bugs at \url{http://github.com/ropensci/rebird/issues}
+  \item \url{https://docs.ropensci.org/rebird/}
+  \item \url{https://github.com/ropensci/rebird}
+  \item Report bugs at \url{https://github.com/ropensci/rebird/issues}
 }
 
 }
 \author{
-\strong{Maintainer}: Sebastian Pardo \email{sebpardo@gmail.com} (0000-0002-4147-5796)
+\strong{Maintainer}: Sebastian Pardo \email{sebpardo@gmail.com} (\href{https://orcid.org/0000-0002-4147-5796}{ORCID})
 
 Authors:
 \itemize{
   \item Rafael Maia \email{rm72@zips.uakron.edu}
-  \item Scott Chamberlain \email{myrmecocystus@gmail.com} (0000-0003-1444-9135)
+  \item Scott Chamberlain \email{myrmecocystus@gmail.com} (\href{https://orcid.org/0000-0003-1444-9135}{ORCID})
   \item Andy Teucher \email{andy.teucher@gmail.com}
 }
 
 Other contributors:
 \itemize{
   \item Guy Babineau \email{guy.babineau@gmail.com} [contributor]
+  \item Marianna Foos \email{marianna.foos@gmail.com} [contributor]
+  \item David Bradnum \email{david.bradnum@gmail.com} [contributor]
 }
 
 }

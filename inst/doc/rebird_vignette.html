@@ -1,598 +1,499 @@
 <!DOCTYPE html>
+
 <html>
-  <head>
-    <title>Intro to the rebird package</title>
-    <meta charset="utf-8">
-    <meta name="generator" content="knitr" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/github.min.css">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Sebastian Pardo, Rafael Maia" />
+
+<meta name="date" content="2021-01-25" />
+
+<title>Introduction to the rebird package</title>
+
+<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
 
 <style type="text/css">
-/* Derived from the Docco package by Jeremy Ashkenas: https://github.com/jashkenas/docco/ */
-body {
-    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, FreeSerif, serif;
-    height:100%;
-    font-size: 16px;
-    line-height: 24px;
-    color: #30404f;
-    margin: 0;
-    padding: 0;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    color: #112233;
-    line-height: 1em;
-    font-weight: normal;
-    margin: 0 0 15px 0;
-}
-
-p {
-    margin: 0 0 15px 0;
-    font-size:17px;
-}
-
-#footer p{
-    margin:0;
-    font-size:12px;
-    text-align: center;
-}
-
-a{
-    color:#0088cc;
-    text-decoration:none;
-}
-
-a:hover,a:focus{
-    color:#005580;
-    text-decoration:underline;
-}
-
-#container {
-    position: relative;
-    margin: 0;
-    height:100%;
-}
-
-body > #container { height: auto; min-height: 100%; }
-
-table{
-    width:100%;
-    border: 0;
-    outline: 0;
-}
-
-td.docs{
-    width: 50%;
-    text-align: left;
-    vertical-align: top;
-    padding: 10px 25px 1px 50px;
-}
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 
-td.code{
-    background: #f5f5ff;
-    padding: 10px 25px 1px 50px;
-    overflow-x: hidden;
-    vertical-align: top;
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 
-code{
-    font-size:12px;
-    margin: 0;
-    padding: 0;
-}
-
-td.docs code{
-    background: #f8f8ff;
-    border: 1px solid #dedede;
-    font-size: 80%;
-    padding: 0 0.2em;
-}
-
-td.docs img{
-  max-width: 100%;
-}
-
-pre code{
-    padding:2px 4px;
-    background:#f5f5ff;
-}
-
-td.code pre code{
-    line-height: 18px;
-}
-
-.pilwrap {
-    position: relative;
-}
-.pilcrow {
-    font: 12px Arial;
-    text-decoration: none;
-    color: rgb(69, 69, 69);
-    position: absolute;
-    top: 3px;
-    left: -20px;
-    padding: 1px 2px;
-    opacity: 0;
-}
-
-td.docs:hover .pilcrow {
-    opacity: 1;
-}
-
-blockquote {
-    border-left: 4px solid #DDD;
-    padding: 0 15px;
-    color: #777;
-}
-div.handler{
-      width: 5px;
-      padding: 0;
-      cursor: col-resize;
-      position: absolute;
-      z-index: 5;
-}
 </style>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min.js"></script>
-<script type="text/javascript">
-hljs.LANGUAGES.r=function(a){var b="([a-zA-Z]|\\.[a-zA-Z.])[a-zA-Z0-9._]*";return{c:[a.HCM,{b:b,l:b,k:{keyword:"function if in break next repeat else for return switch while try tryCatch|10 stop warning require library attach detach source setMethod setGeneric setGroupGeneric setClass ...|10",literal:"NULL NA TRUE FALSE T F Inf NaN NA_integer_|10 NA_real_|10 NA_character_|10 NA_complex_|10"},r:0},{cN:"number",b:"0[xX][0-9a-fA-F]+[Li]?\\b",r:0},{cN:"number",b:"\\d+(?:[eE][+\\-]?\\d*)?L\\b",r:0},{cN:"number",b:"\\d+\\.(?!\\d)(?:i\\b)?",r:0},{cN:"number",b:"\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",r:0},{b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[a.BE],r:0},{cN:"string",b:"'",e:"'",c:[a.BE],r:0}]}}(hljs);
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
 </script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    <script src="https://yihui.name/js/center-img.js"></script>
-  </head>
-  <body>
-    <div id="container">
-      <table><!--table start-->
-<tr id="row1"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row1">&para;</a></div><!--
-%\VignetteEngine{knitr::docco_classic}
-%\VignetteIndexEntry{rebird vignette}
--->
 
-<h1>Intro to the rebird package</h1>
 
-<p>A programmatic interface to the eBird database. Find out more about eBird at <a href="http://ebird.org/home/">their website</a>.</p>
 
+
+<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Introduction to the rebird package</h1>
+<h4 class="author">Sebastian Pardo, Rafael Maia</h4>
+<h4 class="date">2021-01-25</h4>
+
+
+
+<p>A programmatic interface to the eBird database. Find out more about eBird at <a href="https://ebird.org/home/">their website</a>.</p>
+<div id="installation" class="section level2">
 <h2>Installation</h2>
-
-</td><td class="code"></td></tr><tr id="row2"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row2">&para;</a></div><p>You can install the stable version from CRAN</p></td><td class="code"><pre><code class="r">install.packages(&quot;rebird&quot;)
-</code></pre></td></tr><tr id="row3"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row3">&para;</a></div>
-
-<p>Or the development version from Github</p></td><td class="code"><pre><code class="r">install.packages(&quot;devtools&quot;)
-devtools::install_github(&quot;ropensci/rebird&quot;)
-</code></pre></td></tr><tr id="row4"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row4">&para;</a></div>
-
-<p>Then load the package into the R sesssion</p></td><td class="code"><pre><code class="r">library(&quot;rebird&quot;)
-</code></pre></td></tr><tr id="row5"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row5">&para;</a></div>
-
+<p>You can install the stable version from CRAN</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rebird&quot;</span>)</span></code></pre></div>
+<p>Or the development version from Github</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;ropensci/rebird&quot;</span>)</span></code></pre></div>
+<p>Then load the package into the R session</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;rebird&quot;</span>)</span></code></pre></div>
+</div>
+<div id="usage" class="section level2">
 <h2>Usage</h2>
-
-<p>The <a href="https://documenter.getpostman.com/view/664302/S1ENwy59?version=latest">eBird API server</a> 
-has been updated and thus there are a couple major changes in the way <code>rebird</code> works.
-API requests to eBird now require users to provide an API key, which is linked to your 
-eBird user account. 
-You can pass it to the &#39;key&#39; argument in <code>rebird</code> functions, but we highly recommend
-storing it as an environment variable called EBIRD_KEY in your .Renviron file.
-If you don&#39;t have a key, you can obtain one from <a href="https://ebird.org/api/keygen">https://ebird.org/api/keygen</a>.</p>
-
-<p>You can keep your .Renviron file in your global R home directory (<code>R.home()</code>), your user&#39;s home
-directory (<code>Sys.getenv(&quot;HOME&quot;)</code>), or your current working directory (<code>getwd()</code>). Remember
-that .Renviron is loaded once when you start R, so if you add your API key to the file you will
-have to restart your R session. See <a href="https://csgillespie.github.io/efficientR/r-startup.html">https://csgillespie.github.io/efficientR/r-startup.html</a> for
-more information on R&#39;s startup files.</p>
-
-</td><td class="code"></td></tr><tr id="row6"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row6">&para;</a></div><p>Furthermore, functions now use species codes, rather than scientific names, for species-specific requests.
-We&#39;ve made the switch easy by providing the <code>species_code</code> function, which converts a scientific name to
-its species code:</p></td><td class="code"><pre><code class="r">species_code(&#39;sula variegata&#39;)
-</code></pre>
-<pre><code>## Peruvian Booby (Sula variegata): perboo1
-</code></pre>
-<pre><code>## [1] &quot;perboo1&quot;
-</code></pre></td></tr><tr id="row7"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row7">&para;</a></div>
-
-<p>The <code>species_code</code> function can be called within other <code>rebird</code> functions, or the species code 
-can be specified directly.</p>
-
-<h3>Sightings at location determined by latitude/longitude</h3>
-
-</td><td class="code"></td></tr><tr id="row8"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row8">&para;</a></div><p>Search for bird occurrences by latitude and longitude point</p></td><td class="code"><pre><code class="r">ebirdgeo(species = species_code(&#39;spinus tristis&#39;), lat = 42, lng = -76)
-</code></pre>
-<pre><code>## American Goldfinch (Spinus tristis): amegfi
-</code></pre>
-<pre><code>## # A tibble: 26 x 12
-##    speciesCode comName sciName locId locName obsDt howMany   lat   lng
-##    &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1 amegfi      Americ… Spinus… L100… Bare V… 2019…       7  41.8 -75.9
-##  2 amegfi      Americ… Spinus… L447… Bingha… 2019…       6  42.1 -76.0
-##  3 amegfi      Americ… Spinus… L275… &quot;Home &quot; 2019…       1  42.1 -76.0
-##  4 amegfi      Americ… Spinus… L505… Boland… 2019…       1  42.2 -75.9
-##  5 amegfi      Americ… Spinus… L351… Anson … 2019…      25  42.1 -76.1
-##  6 amegfi      Americ… Spinus… L524… Victor… 2019…       3  42.1 -76.0
-##  7 amegfi      Americ… Spinus… L846… 31 Pul… 2019…       2  42.2 -76.2
-##  8 amegfi      Americ… Spinus… L217… Vestal  2019…      11  42.1 -76.0
-##  9 amegfi      Americ… Spinus… L211… Tri-Ci… 2019…       2  42.1 -76.1
-## 10 amegfi      Americ… Spinus… L166… Chugnu… 2019…      NA  42.1 -76.0
-## # … with 16 more rows, and 3 more variables: obsValid &lt;lgl&gt;,
-## #   obsReviewed &lt;lgl&gt;, locationPrivate &lt;lgl&gt;
-</code></pre></td></tr><tr id="row9"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row9">&para;</a></div>
-
-<p>Same, but with additional parameter settings, returning only 10 records, including provisional records, and hotspot records. </p></td><td class="code"><pre><code class="r">ebirdgeo(lat = 42, lng = -76, max = 10, includeProvisional = TRUE, hotspot = TRUE)
-</code></pre>
-<pre><code>## # A tibble: 10 x 12
-##    speciesCode comName sciName locId locName obsDt howMany   lat   lng
-##    &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1 cangoo      Canada… Branta… L147… Quaker… 2019…       2  42.0 -75.9
-##  2 mallar3     Mallard Anas p… L147… Quaker… 2019…      27  42.0 -75.9
-##  3 grbher3     Great … Ardea … L147… Quaker… 2019…       1  42.0 -75.9
-##  4 blujay      Blue J… Cyanoc… L147… Quaker… 2019…       1  42.0 -75.9
-##  5 eursta      Europe… Sturnu… L147… Quaker… 2019…       4  42.0 -75.9
-##  6 daejun      Dark-e… Junco … L147… Quaker… 2019…       1  42.0 -75.9
-##  7 turvul      Turkey… Cathar… L447… Bingha… 2019…       8  42.1 -76.0
-##  8 norhar2     Northe… Circus… L447… Bingha… 2019…       1  42.1 -76.0
-##  9 baleag      Bald E… Haliae… L447… Bingha… 2019…       1  42.1 -76.0
-## 10 rethaw      Red-ta… Buteo … L447… Bingha… 2019…       2  42.1 -76.0
-## # … with 3 more variables: obsValid &lt;lgl&gt;, obsReviewed &lt;lgl&gt;,
-## #   locationPrivate &lt;lgl&gt;
-</code></pre></td></tr><tr id="row10"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row10">&para;</a></div>
-
-<h3>Recent sightings from location IDs</h3>
-
-</td><td class="code"></td></tr><tr id="row11"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row11">&para;</a></div><p>Search for bird occurrences for in a hotspot using its ID</p></td><td class="code"><pre><code class="r">ebirdregion(loc = &#39;L99381&#39;)
-</code></pre>
-<pre><code>## # A tibble: 68 x 12
-##    speciesCode comName sciName locId locName obsDt howMany   lat   lng
-##    &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1 cangoo      Canada… Branta… L993… Stewar… 2019…       8  42.5 -76.5
-##  2 mallar3     Mallard Anas p… L993… Stewar… 2019…      25  42.5 -76.5
-##  3 ribgul      Ring-b… Larus … L993… Stewar… 2019…      30  42.5 -76.5
-##  4 hergul      Herrin… Larus … L993… Stewar… 2019…      35  42.5 -76.5
-##  5 gbbgul      Great … Larus … L993… Stewar… 2019…       6  42.5 -76.5
-##  6 doccor      Double… Phalac… L993… Stewar… 2019…     250  42.5 -76.5
-##  7 rebwoo      Red-be… Melane… L993… Stewar… 2019…       1  42.5 -76.5
-##  8 dowwoo      Downy … Dryoba… L993… Stewar… 2019…       3  42.5 -76.5
-##  9 norfli      Northe… Colapt… L993… Stewar… 2019…       1  42.5 -76.5
-## 10 blujay      Blue J… Cyanoc… L993… Stewar… 2019…       8  42.5 -76.5
-## # … with 58 more rows, and 3 more variables: obsValid &lt;lgl&gt;,
-## #   obsReviewed &lt;lgl&gt;, locationPrivate &lt;lgl&gt;
-</code></pre></td></tr><tr id="row12"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row12">&para;</a></div>
-
-<p>Search by location ID and species name, as well as some additional parameter settings </p></td><td class="code"><pre><code class="r">ebirdregion(loc = &#39;L99381&#39;, species = species_code(&#39;larus delawarensis&#39;), 
-         max = 10, provisional = TRUE, hotspot = TRUE)
-</code></pre>
-<pre><code>## Ring-billed Gull (Larus delawarensis): ribgul
-</code></pre>
-<pre><code>## # A tibble: 1 x 12
-##   speciesCode comName sciName locId locName obsDt howMany   lat   lng
-##   &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 ribgul      Ring-b… Larus … L993… Stewar… 2019…      30  42.5 -76.5
-## # … with 3 more variables: obsValid &lt;lgl&gt;, obsReviewed &lt;lgl&gt;,
-## #   locationPrivate &lt;lgl&gt;
-</code></pre></td></tr><tr id="row13"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row13">&para;</a></div>
-
-<h2>Nearest observations of a species</h2>
-
-</td><td class="code"></td></tr><tr id="row14"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row14">&para;</a></div><p>Search for a species&#39; occurrences near a given latitude and longitude</p></td><td class="code"><pre><code class="r">nearestobs(species_code(&#39;branta canadensis&#39;), 42, -76)
-</code></pre>
-<pre><code>## Canada Goose (Branta canadensis): cangoo
-</code></pre>
-<pre><code>## # A tibble: 36 x 12
-##    speciesCode comName sciName locId locName obsDt howMany   lat   lng
-##    &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1 cangoo      Canada… Branta… L147… Quaker… 2019…       2  42.0 -75.9
-##  2 cangoo      Canada… Branta… L978… Murphy… 2019…      NA  42.1 -76.0
-##  3 cangoo      Canada… Branta… L207… Workwa… 2019…       4  42.1 -75.9
-##  4 cangoo      Canada… Branta… L245… Water … 2019…      20  42.1 -75.9
-##  5 cangoo      Canada… Branta… L274… River … 2019…      25  42.1 -76.0
-##  6 cangoo      Canada… Branta… L255… Wall S… 2019…       1  42.1 -75.9
-##  7 cangoo      Canada… Branta… L446… PA-SQ-… 2019…      25  41.8 -75.9
-##  8 cangoo      Canada… Branta… L179… Joyce … 2019…       6  41.8 -75.9
-##  9 cangoo      Canada… Branta… L246… Martin… 2019…       2  42.1 -75.9
-## 10 cangoo      Canada… Branta… L166… Chugnu… 2019…      40  42.1 -76.0
-## # … with 26 more rows, and 3 more variables: obsValid &lt;lgl&gt;,
-## #   obsReviewed &lt;lgl&gt;, locationPrivate &lt;lgl&gt;
-</code></pre></td></tr><tr id="row15"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row15">&para;</a></div>
-
-<h3>Recent observations at a region</h3>
-
-</td><td class="code"></td></tr><tr id="row16"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row16">&para;</a></div><p>Search for bird occurrences by region and species name</p></td><td class="code"><pre><code class="r">ebirdregion(loc = &#39;US&#39;, species = species_code(&#39;Setophaga caerulescens&#39;))
-</code></pre>
-<pre><code>## Black-throated Blue Warbler (Setophaga caerulescens): btbwar
-</code></pre>
-<pre><code>## # A tibble: 1,492 x 12
-##    speciesCode comName sciName locId locName obsDt howMany   lat   lng
-##    &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1 btbwar      Black-… Setoph… L668… Naples… 2019…       1  26.1 -81.7
-##  2 btbwar      Black-… Setoph… L399… Florid… 2019…       1  26.4 -80.1
-##  3 btbwar      Black-… Setoph… L900… 1301 S… 2019…       2  26.3 -80.1
-##  4 btbwar      Black-… Setoph… L486… Union … 2019…       1  40.7 -74.0
-##  5 btbwar      Black-… Setoph… L100… &quot;Parki… 2019…       1  26.1 -80.1
-##  6 btbwar      Black-… Setoph… L685… Hillsb… 2019…       2  26.3 -80.2
-##  7 btbwar      Black-… Setoph… L616… Lake L… 2019…       3  35.9 -78.7
-##  8 btbwar      Black-… Setoph… L871… Eno Ri… 2019…       1  36.1 -79.0
-##  9 btbwar      Black-… Setoph… L994… Jupite… 2019…       1  27.0 -80.1
-## 10 btbwar      Black-… Setoph… L127… Hugh T… 2019…       1  26.1 -80.1
-## # … with 1,482 more rows, and 3 more variables: obsValid &lt;lgl&gt;,
-## #   obsReviewed &lt;lgl&gt;, locationPrivate &lt;lgl&gt;
-</code></pre></td></tr><tr id="row17"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row17">&para;</a></div>
-
-<p>Search by location ID and species name, as well as some additional parameter settings. Note that we use <code>US-OH</code> to represent Ohio within the US.</p></td><td class="code"><pre><code class="r">ebirdregion(loc = &#39;US-OH&#39;, max = 10, provisional = TRUE, hotspot = TRUE)
-</code></pre>
-<pre><code>## # A tibble: 10 x 12
-##    speciesCode comName sciName locId locName obsDt howMany   lat   lng
-##    &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1 amekes      Americ… Falco … L813… Washbu… 2019…       1  40.7 -83.3
-##  2 turvul      Turkey… Cathar… L813… Washbu… 2019…       1  40.7 -83.3
-##  3 bkcchi      Black-… Poecil… L805… Rocky … 2019…       4  41.4 -81.9
-##  4 tuftit      Tufted… Baeolo… L805… Rocky … 2019…       1  41.4 -81.9
-##  5 reshaw      Red-sh… Buteo … L805… Rocky … 2019…       1  41.4 -81.9
-##  6 rebwoo      Red-be… Melane… L805… Rocky … 2019…       1  41.4 -81.9
-##  7 mallar3     Mallard Anas p… L805… Rocky … 2019…       4  41.4 -81.9
-##  8 houfin      House … Haemor… L805… Rocky … 2019…       6  41.4 -81.9
-##  9 dowwoo      Downy … Dryoba… L805… Rocky … 2019…       2  41.4 -81.9
-## 10 cangoo      Canada… Branta… L805… Rocky … 2019…      14  41.4 -81.9
-## # … with 3 more variables: obsValid &lt;lgl&gt;, obsReviewed &lt;lgl&gt;,
-## #   locationPrivate &lt;lgl&gt;
-</code></pre></td></tr><tr id="row18"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row18">&para;</a></div>
-
-<h3>Frequency of observations at hotspots or regions</h3>
-
-</td><td class="code"></td></tr><tr id="row19"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row19">&para;</a></div><p>Obtain historical frequencies of bird occurrences at a given hotspot</p></td><td class="code"><pre><code class="r">ebirdfreq(loctype = &#39;hotspots&#39;, loc = &#39;L196159&#39;)
-</code></pre>
-<pre><code>## # A tibble: 9,408 x 4
-##    comName                     monthQt   frequency sampleSize
-##    &lt;chr&gt;                       &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;
-##  1 Snow Goose                  January-1     0             33
-##  2 Greater White-fronted Goose January-1     0             33
-##  3 Cackling Goose              January-1     0             33
-##  4 Canada Goose                January-1     0             33
-##  5 Cackling/Canada Goose       January-1     0             33
-##  6 Trumpeter Swan              January-1     0             33
-##  7 Wood Duck                   January-1     0.152         33
-##  8 Blue-winged Teal            January-1     0             33
-##  9 Cinnamon Teal               January-1     0             33
-## 10 Blue-winged/Cinnamon Teal   January-1     0             33
-## # … with 9,398 more rows
-</code></pre></td></tr><tr id="row20"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row20">&para;</a></div>
-
-<p>Same, but in wide format (for making bar charts)</p></td><td class="code"><pre><code class="r">ebirdfreq(loctype = &#39;hotspots&#39;, loc = &#39;L196159&#39;, long = FALSE)
-</code></pre>
-<pre><code>## # A tibble: 197 x 49
-##    comName `January-1` `January-2` `January-3` `January-4` `February-1`
-##    &lt;chr&gt;         &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;
-##  1 Sample…      33         32          43         113           47     
-##  2 Snow G…       0          0           0           0            0     
-##  3 Greate…       0          0           0           0            0     
-##  4 Cackli…       0          0           0           0            0     
-##  5 Canada…       0          0.0312      0.0015      0.106        0.191 
-##  6 Cackli…       0          0           0           0            0     
-##  7 Trumpe…       0          0           0           0            0     
-##  8 Wood D…       0.152      0.0312      0           0.0177       0.0426
-##  9 Blue-w…       0          0           0           0            0     
-## 10 Cinnam…       0          0           0           0            0     
-## # … with 187 more rows, and 43 more variables: `February-2` &lt;dbl&gt;,
-## #   `February-3` &lt;dbl&gt;, `February-4` &lt;dbl&gt;, `March-1` &lt;dbl&gt;,
-## #   `March-2` &lt;dbl&gt;, `March-3` &lt;dbl&gt;, `March-4` &lt;dbl&gt;, `April-1` &lt;dbl&gt;,
-## #   `April-2` &lt;dbl&gt;, `April-3` &lt;dbl&gt;, `April-4` &lt;dbl&gt;, `May-1` &lt;dbl&gt;,
-## #   `May-2` &lt;dbl&gt;, `May-3` &lt;dbl&gt;, `May-4` &lt;dbl&gt;, `June-1` &lt;dbl&gt;,
-## #   `June-2` &lt;dbl&gt;, `June-3` &lt;dbl&gt;, `June-4` &lt;dbl&gt;, `July-1` &lt;dbl&gt;,
-## #   `July-2` &lt;dbl&gt;, `July-3` &lt;dbl&gt;, `July-4` &lt;dbl&gt;, `August-1` &lt;dbl&gt;,
-## #   `August-2` &lt;dbl&gt;, `August-3` &lt;dbl&gt;, `August-4` &lt;dbl&gt;,
-## #   `September-1` &lt;dbl&gt;, `September-2` &lt;dbl&gt;, `September-3` &lt;dbl&gt;,
-## #   `September-4` &lt;dbl&gt;, `October-1` &lt;dbl&gt;, `October-2` &lt;dbl&gt;,
-## #   `October-3` &lt;dbl&gt;, `October-4` &lt;dbl&gt;, `November-1` &lt;dbl&gt;,
-## #   `November-2` &lt;dbl&gt;, `November-3` &lt;dbl&gt;, `November-4` &lt;dbl&gt;,
-## #   `December-1` &lt;dbl&gt;, `December-2` &lt;dbl&gt;, `December-3` &lt;dbl&gt;,
-## #   `December-4` &lt;dbl&gt;
-</code></pre></td></tr><tr id="row21"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row21">&para;</a></div>
-
-<p>Obtain frequency data for a given state</p></td><td class="code"><pre><code class="r">ebirdfreq(loctype = &#39;states&#39;, loc = &#39;CA-BC&#39;)
-</code></pre>
-<pre><code>## # A tibble: 36,048 x 4
-##    comName                                    monthQt  frequency sampleSize
-##    &lt;chr&gt;                                      &lt;chr&gt;        &lt;dbl&gt;      &lt;dbl&gt;
-##  1 Fulvous Whistling-Duck                     January… 0              16870
-##  2 Emperor Goose                              January… 0              16870
-##  3 Snow Goose                                 January… 0.0281         16870
-##  4 Ross&#39;s Goose                               January… 0              16870
-##  5 Snow x Ross&#39;s Goose (hybrid)               January… 0              16870
-##  6 Snow/Ross&#39;s Goose                          January… 0              16870
-##  7 Swan Goose (Domestic type)                 January… 0.0000593      16870
-##  8 Graylag x Swan Goose (Domestic type) (hyb… January… 0              16870
-##  9 Greater White-fronted Goose                January… 0.00765        16870
-## 10 Pink-footed Goose                          January… 0              16870
-## # … with 36,038 more rows
-</code></pre></td></tr><tr id="row22"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row22">&para;</a></div>
-
-<p>Or county</p></td><td class="code"><pre><code class="r">ebirdfreq(loctype = &#39;counties&#39;, loc = &#39;CA-BC-GV&#39;)
-</code></pre>
-<pre><code>## # A tibble: 25,536 x 4
-##    comName                                    monthQt  frequency sampleSize
-##    &lt;chr&gt;                                      &lt;chr&gt;        &lt;dbl&gt;      &lt;dbl&gt;
-##  1 Emperor Goose                              January…   0             5411
-##  2 Snow Goose                                 January…   0.0641        5411
-##  3 Ross&#39;s Goose                               January…   0             5411
-##  4 Snow/Ross&#39;s Goose                          January…   0             5411
-##  5 Greater White-fronted Goose                January…   0.00573       5411
-##  6 Domestic goose sp. (Domestic type)         January…   0             5411
-##  7 Brant                                      January…   0.0307        5411
-##  8 Cackling Goose                             January…   0.0163        5411
-##  9 Canada Goose                               January…   0.200         5411
-## 10 Swan Goose (Domestic type) x Canada Goose… January…   0             5411
-## # … with 25,526 more rows
-</code></pre></td></tr><tr id="row23"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row23">&para;</a></div>
-
-<p>Obtain frequency data within a range of years and months</p></td><td class="code"><pre><code class="r">ebirdfreq(loctype = &#39;hotspots&#39;, loc = &#39;L196159&#39;, startyear = 2010,
-          endyear = 2014, startmonth = 1, endmonth = 3)
-</code></pre>
-<pre><code>## # A tibble: 3,792 x 4
-##    comName                             monthQt   frequency sampleSize
-##    &lt;chr&gt;                               &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;
-##  1 Canada Goose                        January-1       0           10
-##  2 Wood Duck                           January-1       0.4         10
-##  3 Northern Shoveler                   January-1       0.8         10
-##  4 Gadwall                             January-1       0           10
-##  5 Eurasian Wigeon                     January-1       0.4         10
-##  6 American Wigeon                     January-1       1           10
-##  7 Eurasian x American Wigeon (hybrid) January-1       0           10
-##  8 Mallard                             January-1       1           10
-##  9 Northern Pintail                    January-1       0           10
-## 10 Green-winged Teal                   January-1       0           10
-## # … with 3,782 more rows
-</code></pre></td></tr><tr id="row24"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row24">&para;</a></div>
-
-<h3>Recent notable sightings</h3>
-
-</td><td class="code"></td></tr><tr id="row25"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row25">&para;</a></div><p>Search for notable sightings at a given latitude and longitude</p></td><td class="code"><pre><code class="r">ebirdnotable(lat = 42, lng = -70)
-</code></pre>
-<pre><code>## # A tibble: 1,710 x 12
-##    speciesCode comName sciName locId locName obsDt howMany   lat   lng
-##    &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1 buhvir      Blue-h… Vireo … L100… 92–98 … 2019…       1  42.4 -72.6
-##  2 yebcuc      Yellow… Coccyz… L167… Rachel… 2019…       1  43.4 -70.4
-##  3 redhea      Redhead Aythya… L131… Sabatt… 2019…       1  44.1 -70.1
-##  4 pinwar      Pine W… Setoph… L345… Home    2019…       1  42.3 -72.4
-##  5 comgal1     Common… Gallin… L100… Trusto… 2019…       1  41.4 -71.6
-##  6 tufduc      Tufted… Aythya… L100… Trusto… 2019…       1  41.4 -71.6
-##  7 grycat      Gray C… Dumete… L271… Dahl W… 2019…       1  44.0 -71.1
-##  8 trokin      Tropic… Tyrann… L593… Rock M… 2019…       1  42.4 -71.2
-##  9 reevir1     Red-ey… Vireo … L813… P. J. … 2019…       1  41.7 -70.9
-## 10 wessan      Wester… Calidr… L830… Plum I… 2019…       1  42.8 -70.8
-## # … with 1,700 more rows, and 3 more variables: obsValid &lt;lgl&gt;,
-## #   obsReviewed &lt;lgl&gt;, locationPrivate &lt;lgl&gt;
-</code></pre></td></tr><tr id="row26"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row26">&para;</a></div>
-
-<p>or a region</p></td><td class="code"><pre><code class="r">ebirdnotable(locID = &#39;US-NY-109&#39;)
-</code></pre>
-<pre><code>## # A tibble: 49 x 12
-##    speciesCode comName sciName locId locName obsDt howMany   lat   lng
-##    &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1 blkvul      Black … Coragy… L212… Steven… 2019…       2  42.4 -76.4
-##  2 blkvul      Black … Coragy… L212… Steven… 2019…       2  42.4 -76.4
-##  3 whevir      White-… Vireo … L100… Monroe… 2019…       1  42.4 -76.5
-##  4 whevir      White-… Vireo … L542… Norths… 2019…       1  42.4 -76.5
-##  5 whevir      White-… Vireo … L100… 101–19… 2019…       1  42.4 -76.5
-##  6 andduc1     Andean… Oxyura… L100… Bogota  2019…       2  42.5 -76.5
-##  7 whtdov1     White-… Leptot… L100… Bogota  2019…      11  42.5 -76.5
-##  8 whtdov      White-… Leptot… L100… Bogota  2019…       3  42.5 -76.5
-##  9 wfwduc1     White-… Dendro… L100… Bogota  2019…       1  42.5 -76.5
-## 10 musduc      Muscov… Cairin… L100… Bogota  2019…       3  42.5 -76.5
-## # … with 39 more rows, and 3 more variables: obsValid &lt;lgl&gt;,
-## #   obsReviewed &lt;lgl&gt;, locationPrivate &lt;lgl&gt;
-</code></pre></td></tr><tr id="row27"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row27">&para;</a></div>
-
-<h3>Historic Observations</h3>
-
-</td><td class="code"></td></tr><tr id="row28"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row28">&para;</a></div><p>Search for historic observations on a date at a region </p></td><td class="code"><pre><code class="r">ebirdhistorical(loc = &#39;US-VA-003&#39;, date = &#39;2019-02-14&#39;, max = 10)
-</code></pre>
-<pre><code>## # A tibble: 10 x 12
-##    speciesCode comName sciName locId locName obsDt howMany   lat   lng
-##    &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1 cangoo      Canada… Branta… L139… Lickin… 2019…      30  38.1 -78.7
-##  2 mallar3     Mallard Anas p… L139… Lickin… 2019…       5  38.1 -78.7
-##  3 gnwtea      Green-… Anas c… L139… Lickin… 2019…       8  38.1 -78.7
-##  4 killde      Killde… Charad… L139… Lickin… 2019…       1  38.1 -78.7
-##  5 baleag      Bald E… Haliae… L139… Lickin… 2019…       1  38.1 -78.7
-##  6 belkin1     Belted… Megace… L139… Lickin… 2019…       1  38.1 -78.7
-##  7 carwre      Caroli… Thryot… L139… Lickin… 2019…       1  38.1 -78.7
-##  8 whtspa      White-… Zonotr… L139… Lickin… 2019…       2  38.1 -78.7
-##  9 norcar      Northe… Cardin… L139… Lickin… 2019…       1  38.1 -78.7
-## 10 canvas      Canvas… Aythya… L331… Montic… 2019…      19  38.0 -78.5
-## # … with 3 more variables: obsValid &lt;lgl&gt;, obsReviewed &lt;lgl&gt;,
-## #   locationPrivate &lt;lgl&gt;
-</code></pre></td></tr><tr id="row29"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row29">&para;</a></div>
-
-<p>or a hotspot</p></td><td class="code"><pre><code class="r">ebirdhistorical(loc = &#39;L196159&#39;, date = &#39;2019-02-14&#39;, fieldSet = &#39;full&#39;)
-</code></pre>
-<pre><code>## # A tibble: 14 x 27
-##    speciesCode comName sciName locId locName obsDt howMany   lat   lng
-##    &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1 annhum      Anna&#39;s… Calypt… L196… Vancou… 2019…       4  49.3 -123.
-##  2 ribgul      Ring-b… Larus … L196… Vancou… 2019…       4  49.3 -123.
-##  3 glwgul      Glauco… Larus … L196… Vancou… 2019…      29  49.3 -123.
-##  4 norcro      Northw… Corvus… L196… Vancou… 2019…     100  49.3 -123.
-##  5 bkcchi      Black-… Poecil… L196… Vancou… 2019…      16  49.3 -123.
-##  6 bushti      Bushtit Psaltr… L196… Vancou… 2019…      20  49.3 -123.
-##  7 pacwre1     Pacifi… Troglo… L196… Vancou… 2019…       1  49.3 -123.
-##  8 houfin      House … Haemor… L196… Vancou… 2019…       2  49.3 -123.
-##  9 purfin      Purple… Haemor… L196… Vancou… 2019…       3  49.3 -123.
-## 10 amegfi      Americ… Spinus… L196… Vancou… 2019…      15  49.3 -123.
-## 11 daejun      Dark-e… Junco … L196… Vancou… 2019…      37  49.3 -123.
-## 12 sonspa      Song S… Melosp… L196… Vancou… 2019…      12  49.3 -123.
-## 13 spotow      Spotte… Pipilo… L196… Vancou… 2019…       1  49.3 -123.
-## 14 rewbla      Red-wi… Agelai… L196… Vancou… 2019…       6  49.3 -123.
-## # … with 18 more variables: obsValid &lt;lgl&gt;, obsReviewed &lt;lgl&gt;,
-## #   locationPrivate &lt;lgl&gt;, subnational2Code &lt;chr&gt;, subnational2Name &lt;chr&gt;,
-## #   subnational1Code &lt;chr&gt;, subnational1Name &lt;chr&gt;, countryCode &lt;chr&gt;,
-## #   countryName &lt;chr&gt;, userDisplayName &lt;chr&gt;, subId &lt;chr&gt;, obsId &lt;chr&gt;,
-## #   checklistId &lt;chr&gt;, presenceNoted &lt;lgl&gt;, hasComments &lt;lgl&gt;,
-## #   firstName &lt;chr&gt;, lastName &lt;chr&gt;, hasRichMedia &lt;lgl&gt;
-</code></pre></td></tr><tr id="row30"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row30">&para;</a></div>
-
-<h3>eBird taxonomy</h3>
-
-</td><td class="code"></td></tr><tr id="row31"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row31">&para;</a></div><p>Returns a data.frame of all species in the eBird taxonomy for the given parameter inputs</p></td><td class="code"><pre><code class="r">ebirdtaxonomy()
-</code></pre>
+<p>The <a href="https://documenter.getpostman.com/view/664302/S1ENwy59?version=latest">eBird API server</a> has been updated and thus there are a couple major changes in the way <code>rebird</code> works. API requests to eBird now require users to provide an API key, which is linked to your eBird user account. You can pass it to the ‘key’ argument in <code>rebird</code> functions, but we highly recommend storing it as an environment variable called EBIRD_KEY in your .Renviron file. If you don’t have a key, you can obtain one from <a href="https://ebird.org/api/keygen" class="uri">https://ebird.org/api/keygen</a>.</p>
+<p>You can keep your .Renviron file in your global R home directory (<code>R.home()</code>), your user’s home directory (<code>Sys.getenv(&quot;HOME&quot;)</code>), or your current working directory (<code>getwd()</code>). Remember that .Renviron is loaded once when you start R, so if you add your API key to the file you will have to restart your R session. See <code>?Startup</code> for more information on R’s startup files.</p>
+<p>Furthermore, functions now use species codes, rather than scientific names, for species-specific requests. We’ve made the switch easy by providing the <code>species_code</code> function, which converts a scientific name to its species code:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">species_code</span>(<span class="st">&#39;sula variegata&#39;</span>)</span></code></pre></div>
+<pre><code>## Peruvian Booby (Sula variegata): perboo1</code></pre>
+<pre><code>## [1] &quot;perboo1&quot;</code></pre>
+<p>The <code>species_code</code> function can be called within other <code>rebird</code> functions, or the species code can be specified directly.</p>
+</div>
+<div id="ebird-taxonomy" class="section level2">
+<h2>eBird Taxonomy</h2>
+<p>The eBird taxonomy is internally stored in <code>rebird</code> and can be called using</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>rebird<span class="sc">:::</span>tax</span></code></pre></div>
 <pre><code>## # A tibble: 16,513 x 14
-##    sciName comName speciesCode category taxonOrder bandingCodes
-##    &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;       
-##  1 Struth… Common… ostric2     species           1 &lt;NA&gt;        
-##  2 Struth… Somali… ostric3     species           6 &lt;NA&gt;        
-##  3 Struth… Common… y00934      slash             7 &lt;NA&gt;        
-##  4 Rhea a… Greate… grerhe1     species           8 &lt;NA&gt;        
-##  5 Rhea p… Lesser… lesrhe2     species          14 &lt;NA&gt;        
-##  6 Rhea p… Lesser… lesrhe4     issf             15 &lt;NA&gt;        
-##  7 Rhea p… Lesser… lesrhe3     issf             18 &lt;NA&gt;        
-##  8 Nothoc… Tawny-… tabtin1     species          19 &lt;NA&gt;        
-##  9 Nothoc… Highla… higtin1     species          20 HITI        
-## 10 Nothoc… Highla… higtin2     issf             21 &lt;NA&gt;        
-## # … with 16,503 more rows, and 8 more variables: comNameCodes &lt;chr&gt;,
-## #   sciNameCodes &lt;chr&gt;, order &lt;chr&gt;, familyComName &lt;chr&gt;,
-## #   familySciName &lt;chr&gt;, reportAs &lt;chr&gt;, extinct &lt;lgl&gt;, extinctYear &lt;int&gt;
-</code></pre></td></tr><tr id="row32"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row32">&para;</a></div>
+##    sciName comName speciesCode category taxonOrder bandingCodes comNameCodes
+##    &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;       
+##  1 Struth… Common… ostric2     species           1 &lt;NA&gt;         COOS        
+##  2 Struth… Somali… ostric3     species           6 &lt;NA&gt;         SOOS        
+##  3 Struth… Common… y00934      slash             7 &lt;NA&gt;         SOOS,COOS   
+##  4 Rhea a… Greate… grerhe1     species           8 &lt;NA&gt;         GRRH        
+##  5 Rhea p… Lesser… lesrhe2     species          14 &lt;NA&gt;         LERH        
+##  6 Rhea p… Lesser… lesrhe4     issf             15 &lt;NA&gt;         LERH        
+##  7 Rhea p… Lesser… lesrhe3     issf             18 &lt;NA&gt;         LERH        
+##  8 Nothoc… Tawny-… tabtin1     species          19 &lt;NA&gt;         TBTI        
+##  9 Nothoc… Highla… higtin1     species          20 HITI         &lt;NA&gt;        
+## 10 Nothoc… Highla… higtin2     issf             21 &lt;NA&gt;         HITI        
+## # … with 16,503 more rows, and 7 more variables: sciNameCodes &lt;chr&gt;,
+## #   order &lt;chr&gt;, familyComName &lt;chr&gt;, familySciName &lt;chr&gt;, reportAs &lt;chr&gt;,
+## #   extinct &lt;lgl&gt;, extinctYear &lt;int&gt;</code></pre>
+<p>While the internal taxonomy is kept up to date with each package release, it could be outdated if a new taxonomy is made available before the package is updated. You can obtain the latest eBird taxonomy by</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>new_tax <span class="ot">&lt;-</span> <span class="fu">ebirdtaxonomy</span>()</span></code></pre></div>
+</div>
+<div id="sightings-at-location-determined-by-latitudelongitude" class="section level2">
+<h2>Sightings at location determined by latitude/longitude</h2>
+<p>Search for bird occurrences by latitude and longitude point</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ebirdgeo</span>(<span class="at">species =</span> <span class="fu">species_code</span>(<span class="st">&#39;spinus tristis&#39;</span>), <span class="at">lat =</span> <span class="dv">42</span>, <span class="at">lng =</span> <span class="sc">-</span><span class="dv">76</span>)</span></code></pre></div>
+<pre><code>## American Goldfinch (Spinus tristis): amegfi</code></pre>
+<pre><code>## # A tibble: 17 x 13
+##    speciesCode comName sciName locId locName obsDt howMany   lat   lng obsValid
+##    &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;   
+##  1 amegfi      Americ… Spinus… L133… &quot;545 R… 2021…       8  42.0 -76.1 TRUE    
+##  2 amegfi      Americ… Spinus… L197… &quot;esthe… 2021…      12  42.1 -75.9 TRUE    
+##  3 amegfi      Americ… Spinus… L275… &quot;Home &quot; 2021…       8  42.1 -76.0 TRUE    
+##  4 amegfi      Americ… Spinus… L109… &quot;Hillc… 2021…       1  42.2 -75.9 TRUE    
+##  5 amegfi      Americ… Spinus… L186… &quot;Otsin… 2021…       1  42.1 -75.9 TRUE    
+##  6 amegfi      Americ… Spinus… L895… &quot;Nowla… 2021…       2  42.1 -75.9 TRUE    
+##  7 amegfi      Americ… Spinus… L207… &quot;Workw… 2021…       4  42.1 -75.9 TRUE    
+##  8 amegfi      Americ… Spinus… L133… &quot;4457 … 2021…       2  42.0 -75.9 TRUE    
+##  9 amegfi      Americ… Spinus… L870… &quot;325 D… 2021…       1  42.2 -76.0 TRUE    
+## 10 amegfi      Americ… Spinus… L121… &quot;1312 … 2021…       3  42.1 -76.0 TRUE    
+## 11 amegfi      Americ… Spinus… L133… &quot;216 W… 2021…       1  42.1 -76.0 TRUE    
+## 12 amegfi      Americ… Spinus… L524… &quot;Victo… 2021…       4  42.1 -76.0 TRUE    
+## 13 amegfi      Americ… Spinus… L505… &quot;Bolan… 2021…       1  42.2 -75.9 TRUE    
+## 14 amegfi      Americ… Spinus… L850… &quot;Sandy… 2021…      20  42.1 -75.9 TRUE    
+## 15 amegfi      Americ… Spinus… L351… &quot;Anson… 2021…      16  42.1 -76.1 TRUE    
+## 16 amegfi      Americ… Spinus… L270… &quot;Gripp… 2021…       1  42.1 -76.1 TRUE    
+## 17 amegfi      Americ… Spinus… L564… &quot;Kinne… 2021…       1  42.1 -76.2 TRUE    
+## # … with 3 more variables: obsReviewed &lt;lgl&gt;, locationPrivate &lt;lgl&gt;,
+## #   subId &lt;chr&gt;</code></pre>
+</div>
+<div id="recent-observations-at-a-region" class="section level2">
+<h2>Recent observations at a region</h2>
+<p>Search for bird occurrences by region and species name</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ebirdregion</span>(<span class="at">loc =</span> <span class="st">&#39;US&#39;</span>, <span class="at">species =</span> <span class="st">&#39;btbwar&#39;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 81 x 13
+##    speciesCode comName sciName locId locName obsDt howMany   lat   lng obsValid
+##    &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;   
+##  1 btbwar      Black-… Setoph… L577… Merrit… 2021…       1  28.6 -80.7 TRUE    
+##  2 btbwar      Black-… Setoph… L863… 104 7t… 2021…       1  32.0 -80.8 TRUE    
+##  3 btbwar      Black-… Setoph… L407… Thomps… 2021…       1  38.9 -77.1 TRUE    
+##  4 btbwar      Black-… Setoph… L193… Rye     2021…       1  43.0 -70.8 TRUE    
+##  5 btbwar      Black-… Setoph… L195… 1 My H… 2021…       1  27.0 -80.1 TRUE    
+##  6 btbwar      Black-… Setoph… L104… Feathe… 2021…       1  25.6 -80.3 TRUE    
+##  7 btbwar      Black-… Setoph… L324… Wither… 2021…       1  31.0 -82.9 TRUE    
+##  8 btbwar      Black-… Setoph… L128… Zoo Mi… 2021…       1  25.6 -80.4 TRUE    
+##  9 btbwar      Black-… Setoph… L992… Kendal… 2021…       1  25.7 -80.4 TRUE    
+## 10 btbwar      Black-… Setoph… L133… 603 S … 2021…       1  26.2 -98.2 TRUE    
+## # … with 71 more rows, and 3 more variables: obsReviewed &lt;lgl&gt;,
+## #   locationPrivate &lt;lgl&gt;, subId &lt;chr&gt;</code></pre>
+</div>
+<div id="recent-observations-at-hotspots" class="section level2">
+<h2>Recent observations at hotspots</h2>
+<p>Search for bird occurrences by a given hotspot</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ebirdregion</span>(<span class="at">loc =</span> <span class="st">&#39;L99381&#39;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 38 x 13
+##    speciesCode comName sciName locId locName obsDt howMany   lat   lng obsValid
+##    &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;   
+##  1 cangoo      Canada… Branta… L993… Stewar… 2021…     300  42.5 -76.5 TRUE    
+##  2 mallar3     Mallard Anas p… L993… Stewar… 2021…      20  42.5 -76.5 TRUE    
+##  3 commer      Common… Mergus… L993… Stewar… 2021…       2  42.5 -76.5 TRUE    
+##  4 ribgul      Ring-b… Larus … L993… Stewar… 2021…      NA  42.5 -76.5 TRUE    
+##  5 hergul      Herrin… Larus … L993… Stewar… 2021…      NA  42.5 -76.5 TRUE    
+##  6 gbbgul      Great … Larus … L993… Stewar… 2021…       3  42.5 -76.5 TRUE    
+##  7 baleag      Bald E… Haliae… L993… Stewar… 2021…       1  42.5 -76.5 TRUE    
+##  8 eursta      Europe… Sturnu… L993… Stewar… 2021…      40  42.5 -76.5 TRUE    
+##  9 doccor      Double… Phalac… L993… Stewar… 2021…       5  42.5 -76.5 TRUE    
+## 10 ambduc      Americ… Anas r… L993… Stewar… 2021…       1  42.5 -76.5 TRUE    
+## # … with 28 more rows, and 3 more variables: obsReviewed &lt;lgl&gt;,
+## #   locationPrivate &lt;lgl&gt;, subId &lt;chr&gt;</code></pre>
+</div>
+<div id="nearest-observations-of-a-species" class="section level2">
+<h2>Nearest observations of a species</h2>
+<p>Search for a species’ occurrences near a given latitude and longitude</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nearestobs</span>(<span class="fu">species_code</span>(<span class="st">&#39;branta canadensis&#39;</span>), <span class="dv">42</span>, <span class="sc">-</span><span class="dv">76</span>)</span></code></pre></div>
+<pre><code>## Canada Goose (Branta canadensis): cangoo</code></pre>
+<pre><code>## # A tibble: 25 x 13
+##    speciesCode comName sciName locId locName obsDt howMany   lat   lng obsValid
+##    &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;   
+##  1 cangoo      Canada… Branta… L109… Hillcr… 2021…      34  42.2 -75.9 TRUE    
+##  2 cangoo      Canada… Branta… L186… Otsini… 2021…     117  42.1 -75.9 TRUE    
+##  3 cangoo      Canada… Branta… L186… Cheri … 2021…       4  42.1 -75.9 TRUE    
+##  4 cangoo      Canada… Branta… L809… Port D… 2021…      74  42.1 -75.9 TRUE    
+##  5 cangoo      Canada… Branta… L527… R Tee … 2021…     100  42.2 -75.9 TRUE    
+##  6 cangoo      Canada… Branta… L133… I-81 N… 2021…      45  42.1 -75.9 TRUE    
+##  7 cangoo      Canada… Branta… L245… Water … 2021…       3  42.1 -75.9 TRUE    
+##  8 cangoo      Canada… Branta… L116… Homest… 2021…     230  42.1 -76.0 TRUE    
+##  9 cangoo      Canada… Branta… L106… IBM CC… 2021…       1  42.1 -76.0 TRUE    
+## 10 cangoo      Canada… Branta… L273… Schnur… 2021…       2  42.1 -75.8 TRUE    
+## # … with 15 more rows, and 3 more variables: obsReviewed &lt;lgl&gt;,
+## #   locationPrivate &lt;lgl&gt;, subId &lt;chr&gt;</code></pre>
+<!--
+## Frequency of observations at hotspots or regions
 
-<p>Search for hybrid species only</p></td><td class="code"><pre><code class="r">ebirdtaxonomy(cat = &quot;hybrid&quot;)
-</code></pre>
-<pre><code>## # A tibble: 462 x 11
-##    sciName comName speciesCode category taxonOrder bandingCodes
-##    &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;       
-##  1 Dendro… Spotte… x00721      hybrid          219 &lt;NA&gt;        
-##  2 Dendro… Black-… x00775      hybrid          224 &lt;NA&gt;        
-##  3 Dendro… White-… x00938      hybrid          226 &lt;NA&gt;        
-##  4 Dendro… Black-… x00875      hybrid          227 &lt;NA&gt;        
-##  5 Anser … Snow x… sxrgoo1     hybrid          244 SRGH        
-##  6 Anser … Grayla… x00776      hybrid          252 &lt;NA&gt;        
-##  7 Anser … Bar-he… x00755      hybrid          260 &lt;NA&gt;        
-##  8 Anser … Snow x… x00627      hybrid          261 &lt;NA&gt;        
-##  9 Anser … Snow G… x00685      hybrid          281 &lt;NA&gt;        
-## 10 Anser … Pink-f… x00756      hybrid          283 &lt;NA&gt;        
-## # … with 452 more rows, and 5 more variables: comNameCodes &lt;chr&gt;,
-## #   sciNameCodes &lt;chr&gt;, order &lt;chr&gt;, familyComName &lt;chr&gt;,
-## #   familySciName &lt;chr&gt;
-</code></pre></td></tr><tr id="row33"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row33">&para;</a></div>
+Obtain historical frequencies of bird occurrences by hotspot or region
 
+
+```r
+# ebirdfreq(loctype = 'hotspots', loc = 'L196159')
+```
+-->
+</div>
+<div id="recent-notable-sightings" class="section level2">
+<h2>Recent notable sightings</h2>
+<p>Search for notable sightings at a given latitude and longitude</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ebirdnotable</span>(<span class="at">lat =</span> <span class="dv">42</span>, <span class="at">lng =</span> <span class="sc">-</span><span class="dv">70</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 3,578 x 13
+##    speciesCode comName sciName locId locName obsDt howMany   lat   lng obsValid
+##    &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;   
+##  1 foxsp1      Fox Sp… Passer… L382… Yard    2021…       1  42.2 -71.3 FALSE   
+##  2 foxsp1      Fox Sp… Passer… L276… Standi… 2021…       1  42.3 -71.3 FALSE   
+##  3 reshaw      Red-sh… Buteo … L575… The 20… 2021…       1  44.2 -69.4 FALSE   
+##  4 gadwal      Gadwall Mareca… L143… Holyok… 2021…       2  42.2 -72.6 FALSE   
+##  5 lbbgul      Lesser… Larus … L106… Goulds… 2021…       1  42.2 -71.4 FALSE   
+##  6 pinwar      Pine W… Setoph… L919… Northb… 2021…       1  42.1 -71.7 FALSE   
+##  7 bnhcow      Brown-… Moloth… L825… Westwo… 2021…       1  42.2 -71.2 FALSE   
+##  8 comred      Common… Acanth… L358… Fort H… 2021…       2  41.8 -70.0 FALSE   
+##  9 redcro10    Red Cr… Loxia … L480… West B… 2021…       2  41.7 -70.4 FALSE   
+## 10 foxsp1      Fox Sp… Passer… L276… Standi… 2021…       1  42.3 -71.3 FALSE   
+## # … with 3,568 more rows, and 3 more variables: obsReviewed &lt;lgl&gt;,
+## #   locationPrivate &lt;lgl&gt;, subId &lt;chr&gt;</code></pre>
+<p>or a region</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ebirdnotable</span>(<span class="at">locID =</span> <span class="st">&#39;US-NY-109&#39;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 81 x 13
+##    speciesCode comName sciName locId locName obsDt howMany   lat   lng obsValid
+##    &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;   
+##  1 blkvul      Black … Coragy… L212… Steven… 2021…       1  42.4 -76.4 FALSE   
+##  2 redcro      Red Cr… Loxia … L550… Cornel… 2021…       1  42.5 -76.5 FALSE   
+##  3 yerwar      Yellow… Setoph… L351… Fuerte… 2021…       1  42.5 -76.5 FALSE   
+##  4 redcro      Red Cr… Loxia … L123… Boyer … 2021…       5  42.3 -76.3 FALSE   
+##  5 whwcro      White-… Loxia … L550… Cornel… 2021…       2  42.5 -76.5 FALSE   
+##  6 x00684      Canvas… Aythya… L140… East S… 2021…       1  42.5 -76.5 FALSE   
+##  7 x00684      Canvas… Aythya… L140… East S… 2021…       1  42.5 -76.5 FALSE   
+##  8 blksco2     Black … Melani… L353… Salt P… 2021…       1  42.5 -76.5 FALSE   
+##  9 evegro      Evenin… Coccot… L133… 571 So… 2021…      17  42.3 -76.4 FALSE   
+## 10 hoared2     Hoary … Acanth… L686… George… 2021…       1  42.5 -76.3 FALSE   
+## # … with 71 more rows, and 3 more variables: obsReviewed &lt;lgl&gt;,
+## #   locationPrivate &lt;lgl&gt;, subId &lt;chr&gt;</code></pre>
+</div>
+<div id="historic-observations" class="section level2">
+<h2>Historic Observations</h2>
+<p>Obtain a list of species reported on a specific date in a given region</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ebirdhistorical</span>(<span class="at">loc =</span> <span class="st">&#39;US-VA-003&#39;</span>, <span class="at">date =</span> <span class="st">&#39;2019-02-14&#39;</span>,<span class="at">max =</span> <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 10 x 13
+##    speciesCode comName sciName locId locName obsDt howMany   lat   lng obsValid
+##    &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;   
+##  1 cangoo      Canada… Branta… L139… Lickin… 2019…      30  38.1 -78.7 TRUE    
+##  2 mallar3     Mallard Anas p… L139… Lickin… 2019…       5  38.1 -78.7 TRUE    
+##  3 gnwtea      Green-… Anas c… L139… Lickin… 2019…       8  38.1 -78.7 TRUE    
+##  4 killde      Killde… Charad… L139… Lickin… 2019…       1  38.1 -78.7 TRUE    
+##  5 baleag      Bald E… Haliae… L139… Lickin… 2019…       1  38.1 -78.7 TRUE    
+##  6 belkin1     Belted… Megace… L139… Lickin… 2019…       1  38.1 -78.7 TRUE    
+##  7 carwre      Caroli… Thryot… L139… Lickin… 2019…       1  38.1 -78.7 TRUE    
+##  8 whtspa      White-… Zonotr… L139… Lickin… 2019…       2  38.1 -78.7 TRUE    
+##  9 norcar      Northe… Cardin… L139… Lickin… 2019…       1  38.1 -78.7 TRUE    
+## 10 canvas      Canvas… Aythya… L331… Montic… 2019…      19  38.0 -78.5 TRUE    
+## # … with 3 more variables: obsReviewed &lt;lgl&gt;, locationPrivate &lt;lgl&gt;,
+## #   subId &lt;chr&gt;</code></pre>
+<p>or a hotspot</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ebirdhistorical</span>(<span class="at">loc =</span> <span class="st">&#39;L196159&#39;</span>, <span class="at">date =</span> <span class="st">&#39;2019-02-14&#39;</span>, <span class="at">fieldSet =</span> <span class="st">&#39;full&#39;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 14 x 27
+##    speciesCode comName sciName locId locName obsDt howMany   lat   lng obsValid
+##    &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;   
+##  1 annhum      Anna&#39;s… Calypt… L196… Vancou… 2019…       4  49.3 -123. TRUE    
+##  2 ribgul      Ring-b… Larus … L196… Vancou… 2019…       4  49.3 -123. TRUE    
+##  3 glwgul      Glauco… Larus … L196… Vancou… 2019…      29  49.3 -123. TRUE    
+##  4 norcro      Northw… Corvus… L196… Vancou… 2019…     100  49.3 -123. TRUE    
+##  5 bkcchi      Black-… Poecil… L196… Vancou… 2019…      16  49.3 -123. TRUE    
+##  6 bushti      Bushtit Psaltr… L196… Vancou… 2019…      20  49.3 -123. TRUE    
+##  7 pacwre1     Pacifi… Troglo… L196… Vancou… 2019…       1  49.3 -123. TRUE    
+##  8 houfin      House … Haemor… L196… Vancou… 2019…       2  49.3 -123. TRUE    
+##  9 purfin      Purple… Haemor… L196… Vancou… 2019…       3  49.3 -123. TRUE    
+## 10 amegfi      Americ… Spinus… L196… Vancou… 2019…      15  49.3 -123. TRUE    
+## 11 daejun      Dark-e… Junco … L196… Vancou… 2019…      37  49.3 -123. TRUE    
+## 12 sonspa      Song S… Melosp… L196… Vancou… 2019…      12  49.3 -123. TRUE    
+## 13 spotow      Spotte… Pipilo… L196… Vancou… 2019…       1  49.3 -123. TRUE    
+## 14 rewbla      Red-wi… Agelai… L196… Vancou… 2019…       6  49.3 -123. TRUE    
+## # … with 17 more variables: obsReviewed &lt;lgl&gt;, locationPrivate &lt;lgl&gt;,
+## #   subId &lt;chr&gt;, subnational2Code &lt;chr&gt;, subnational2Name &lt;chr&gt;,
+## #   subnational1Code &lt;chr&gt;, subnational1Name &lt;chr&gt;, countryCode &lt;chr&gt;,
+## #   countryName &lt;chr&gt;, userDisplayName &lt;chr&gt;, obsId &lt;chr&gt;, checklistId &lt;chr&gt;,
+## #   presenceNoted &lt;lgl&gt;, hasComments &lt;lgl&gt;, firstName &lt;chr&gt;, lastName &lt;chr&gt;,
+## #   hasRichMedia &lt;lgl&gt;</code></pre>
+</div>
+<div id="information-on-a-given-region-or-hotspot" class="section level2">
 <h2>Information on a given region or hotspot</h2>
-
-</td><td class="code"></td></tr><tr id="row34"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row34">&para;</a></div><p>Obtain detailed information on any valid eBird region</p></td><td class="code"><pre><code class="r">ebirdregioninfo(&quot;CA-BC-GV&quot;)
-</code></pre>
+<p>Obtain detailed information on any valid eBird region</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ebirdregioninfo</span>(<span class="st">&quot;CA-BC-GV&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 5
 ##   region                                     minX  maxX  minY  maxY
 ##   &lt;chr&gt;                                     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 Metro Vancouver, British Columbia, Canada -123. -122.  49.0  49.6
-</code></pre></td></tr><tr id="row35"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row35">&para;</a></div>
-
-<p>or hotspot</p></td><td class="code"><pre><code class="r">ebirdregioninfo(&quot;L196159&quot;)
-</code></pre>
+## 1 Metro Vancouver, British Columbia, Canada -123. -122.  49.0  49.6</code></pre>
+<p>or hotspot</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ebirdregioninfo</span>(<span class="st">&quot;L196159&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 16
 ##   locId name  latitude longitude countryCode countryName subnational1Name
 ##   &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;           
 ## 1 L196… Vanc…     49.3     -123. CA          Canada      British Columbia
 ## # … with 9 more variables: subnational1Code &lt;chr&gt;, subnational2Code &lt;chr&gt;,
 ## #   subnational2Name &lt;chr&gt;, isHotspot &lt;lgl&gt;, locName &lt;chr&gt;, lat &lt;dbl&gt;,
-## #   lng &lt;dbl&gt;, hierarchicalName &lt;chr&gt;, locID &lt;chr&gt;
-</code></pre></td></tr><tr id="row36"><td class="docs"><div class="pilwrap"><a class="pilcrow" href="#row36">&para;</a></div>
-</td><td class="code"></td></tr>
-      </table><!--table end-->
-    </div>
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="https://yihui.name/knitr/js/docco-resize.js"></script>
-  </body>
+## #   lng &lt;dbl&gt;, hierarchicalName &lt;chr&gt;, locID &lt;chr&gt;</code></pre>
+<p>Obtain a list of eBird species codes for all species recorded in a region</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ebirdregionspecies</span>(<span class="st">&quot;GB-ENG-LND&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 304 x 1
+##    speciesCode
+##    &lt;chr&gt;      
+##  1 bahgoo     
+##  2 snogoo     
+##  3 gragoo     
+##  4 gwfgoo     
+##  5 tunbeg1    
+##  6 pifgoo     
+##  7 brant      
+##  8 bargoo     
+##  9 cangoo     
+## 10 rebgoo1    
+## # … with 294 more rows</code></pre>
+<p>or a hotspot</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ebirdregionspecies</span>(<span class="st">&quot;L5803024&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 156 x 1
+##    speciesCode
+##    &lt;chr&gt;      
+##  1 gragoo     
+##  2 gwfgoo     
+##  3 bargoo     
+##  4 cangoo     
+##  5 mutswa     
+##  6 egygoo     
+##  7 comshe     
+##  8 manduc     
+##  9 gargan     
+## 10 norsho     
+## # … with 146 more rows</code></pre>
+<p>Obtain a list of all subregions within an eBird region</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ebirdsubregionlist</span>(<span class="st">&quot;subnational1&quot;</span>,<span class="st">&quot;US&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 51 x 2
+##    code  name                
+##    &lt;chr&gt; &lt;chr&gt;               
+##  1 US-AL Alabama             
+##  2 US-AK Alaska              
+##  3 US-AZ Arizona             
+##  4 US-AR Arkansas            
+##  5 US-CA California          
+##  6 US-CO Colorado            
+##  7 US-CT Connecticut         
+##  8 US-DE Delaware            
+##  9 US-DC District of Columbia
+## 10 US-FL Florida             
+## # … with 41 more rows</code></pre>
+</div>
+<div id="checklist-feed" class="section level2">
+<h2>Checklist Feed</h2>
+<p>Obtain a list of checklists submitted on a given date at a region or hotspot</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ebirdchecklistfeed</span>(<span class="at">loc =</span> <span class="st">&quot;L207391&quot;</span>, <span class="at">date =</span> <span class="st">&quot;2020-03-24&quot;</span>, <span class="at">max =</span> <span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 5 x 8
+##   locId  subId  userDisplayName  numSpecies obsDt obsTime subID loc             
+##   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;                 &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;           
+## 1 L2073… S6617… David Wood               10 24 M… 14:47   S661… L207391,Mt. Aub…
+## 2 L2073… S6617… Sofia Prado-Irw…         15 24 M… 14:31   S661… L207391,Mt. Aub…
+## 3 L2073… S6619… Jeffrey Gantz            19 24 M… 13:30   S661… L207391,Mt. Aub…
+## 4 L2073… S6617… Ann Gurka                21 24 M… 13:00   S661… L207391,Mt. Aub…
+## 5 L2073… S7098… Barbara Olson            20 24 M… 10:30   S709… L207391,Mt. Aub…</code></pre>
+</div>
+<div id="hotspots-in-a-region-or-nearby-coordinates" class="section level2">
+<h2>Hotspots in a region or nearby coordinates</h2>
+<p>Obtain a list of hotspots within a region</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ebirdhotspotlist</span>(<span class="st">&quot;CA-NS-HL&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 220 x 9
+##    locId locName countryCode subnational1Code subnational2Code   lat   lng
+##    &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;            &lt;chr&gt;            &lt;dbl&gt; &lt;dbl&gt;
+##  1 L233… Abraha… CA          CA-NS            CA-NS-HL          45.2 -62.6
+##  2 L700… Admira… CA          CA-NS            CA-NS-HL          44.7 -63.7
+##  3 L176… Admira… CA          CA-NS            CA-NS-HL          44.8 -63.1
+##  4 L584… Albro … CA          CA-NS            CA-NS-HL          44.7 -63.6
+##  5 L437… Aldern… CA          CA-NS            CA-NS-HL          44.7 -63.6
+##  6 L122… Armdal… CA          CA-NS            CA-NS-HL          44.6 -63.6
+##  7 L624… Atlant… CA          CA-NS            CA-NS-HL          44.7 -63.3
+##  8 L239… Bald R… CA          CA-NS            CA-NS-HL          44.5 -63.6
+##  9 L759… Bayers… CA          CA-NS            CA-NS-HL          44.6 -63.7
+## 10 L642… Beaufo… CA          CA-NS            CA-NS-HL          44.7 -63.5
+## # … with 210 more rows, and 2 more variables: latestObsDt &lt;chr&gt;,
+## #   numSpeciesAllTime &lt;int&gt;</code></pre>
+<p>or within a radius of up to 50 kilometers, from a given set of coordinates.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ebirdhotspotlist</span>(<span class="at">lat =</span> <span class="dv">30</span>, <span class="at">lng =</span> <span class="sc">-</span><span class="dv">90</span>, <span class="at">dist =</span> <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## No region code provided, locating hotspots using lat/lng</code></pre>
+<pre><code>## # A tibble: 52 x 9
+##    locId locName countryCode subnational1Code subnational2Code   lat   lng
+##    &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;            &lt;chr&gt;            &lt;dbl&gt; &lt;dbl&gt;
+##  1 L602… Algier… US          US-LA            US-LA-071         30.0 -90.1
+##  2 L388… Armstr… US          US-LA            US-LA-071         30.0 -90.1
+##  3 L727… Audubo… US          US-LA            US-LA-071         30.0 -90.0
+##  4 L666… BAEA N… US          US-LA            US-LA-087         30.0 -90.0
+##  5 L666… BAEA N… US          US-LA            US-LA-071         29.9 -90.0
+##  6 L242… Bayou … US          US-LA            US-LA-071         30.0 -90.0
+##  7 L725… Bayou … US          US-LA            US-LA-071         30.1 -89.9
+##  8 L727… Chalme… US          US-LA            US-LA-087         29.9 -90.0
+##  9 L453… City P… US          US-LA            US-LA-071         30.0 -90.1
+## 10 L522… City P… US          US-LA            US-LA-071         30.0 -90.1
+## # … with 42 more rows, and 2 more variables: latestObsDt &lt;chr&gt;,
+## #   numSpeciesAllTime &lt;int&gt;</code></pre>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
 </html>
