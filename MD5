@@ -1,7 +1,7 @@
-dc2120e1f0c1f6bb70e4245baf381cab *DESCRIPTION
+903414fd9606a4bc905d3131200ce09e *DESCRIPTION
 ee05ecf0200fee5ee8d64585d26e1dbe *LICENSE
 74402ce8558409e05ae1205b861beab3 *NAMESPACE
-d67afa9dfa00c83ccd9f61844c2f7353 *NEWS.md
+e1ff0962fcfc20a1ed86854dda8e1c67 *NEWS.md
 a2b448d8f672fa4d878d8df70bf6c8fc *R/ebirdchecklistfeed.R
 a93e9651c16e06154bafcdf68c750f64 *R/ebirdfreq.R
 eb6a98328837f22740cfd9f4e4687e97 *R/ebirdgeo.R
@@ -21,12 +21,12 @@ d2b5443ea1c07da674c598f05ed83785 *R/nearestobs.R
 a6f604875195425b93ce1057dd641f20 *R/rebird-deprecated.R
 b4fe12876c37f8a22cde06e9701eecf0 *R/rebird-package.R
 392003514bbd18ff82a0cfa7aec73942 *R/species_code.R
-c8e09d523a85a51fb1366623dfb5f764 *R/sysdata.rda
+1e611b39e3b28d1954411282bfb5c884 *R/sysdata.rda
 7f8cba3b66101c8a38afcfb647df331e *R/zzz.R
 886319f1231e0a9043eee4af22a97e9b *README.md
-3a90fbb25c6db12983c2c90e7e309589 *build/vignette.rds
+0d73d81d57be983e459b33b4ecdd528d *build/vignette.rds
 ea0839e0eab67e0c1ac579fb517ecc7c *inst/doc/rebird_vignette.Rmd
-6fc66ab1a463a19d2ca47cbdce2f9954 *inst/doc/rebird_vignette.html
+a0ec5bdbca202a008e523523a8489cc1 *inst/doc/rebird_vignette.html
 f83eb6f6df7a289afdc5b1287b95d0f0 *inst/vign/rebird_vignette.Rmd
 ea0839e0eab67e0c1ac579fb517ecc7c *inst/vign/rebird_vignette.md
 9ff65f7e8aaa11aab14390ec0a9ec24a *man/ebirdchecklistfeed.Rd
@@ -54,7 +54,7 @@ ece370ea44adac46030e3dd6c14c86df *tests/testthat/test-ebird_get.R
 11bf20e24ca55cd657eb5b89c47ee4b6 *tests/testthat/test-ebirdchecklistfeed.R
 4991cc9d02ebea7906933281405056b6 *tests/testthat/test-ebirdfreq.R
 81efdd19427ae6c1b15be56cffda7a6b *tests/testthat/test-ebirdgeo.R
-e8a9e2e6cf3c93aca87bf7fe4ae599b0 *tests/testthat/test-ebirdhistorical.R
+4a01d42ec6cd0926c9c2b7a546c21360 *tests/testthat/test-ebirdhistorical.R
 a31f24ea7f9355ab5854c6d8fc6bcb76 *tests/testthat/test-ebirdhotspot.R
 963dd4bab6844f5085bf1f501b76f1f9 *tests/testthat/test-ebirdhotspotlist.R
 c582af57a2150c510b61cd383bacc618 *tests/testthat/test-ebirdloc.R
@@ -64,7 +64,7 @@ e5e156d80fe28b173d0721bd757155d6 *tests/testthat/test-ebirdregioncheck.R
 1195f5bf44af11c05c4eba5ed33903bf *tests/testthat/test-ebirdregioninfo.R
 ce02be2776c1d7bee775c093266f791b *tests/testthat/test-ebirdregionspecies.R
 7b427b7fa103e8ec182391d6ba3bb377 *tests/testthat/test-ebirdsubregionlist.R
-587263e497b137c7a8a2cc77cf813c32 *tests/testthat/test-ebirdtaxonomy.R
+8edee36cf8ed51f38584e000e3035941 *tests/testthat/test-ebirdtaxonomy.R
 afdad4dbafe4144cc66c575e5f763dda *tests/testthat/test-nearestobs.R
 06c868489e64ff404daa983d5a2563f1 *tests/testthat/test-species_code.R
 ea0839e0eab67e0c1ac579fb517ecc7c *vignettes/rebird_vignette.Rmd
